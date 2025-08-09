@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: montserrat;
+}
+
+:root {
+    --c01: #ffffff;
+    --c02: #000000;
+    --c03: #7BAEC2;
+    --c04: #1f3440;
+    --c05: rgba(255, 245, 159, 0.7);
+    --c06: rgba(240, 186, 74, 0.7);
+    --c07: rgba(255, 255, 255, 0.620);
+    --c08: #447633;
+    --c09: #B72F2F;
+    --c10: #6B5A38;
+    --c11: #F2CF87;
+    --c12: #61B4E3;
+}
+
+body {
+    display: flex;
+
+    min-height: 100%;
+
+    background-color: #f9f9f9;
+}
+
+/* menu lateral */
+
+#menu-lateral {
+    background-color: var(--c03);
+    width: 17%;
+    min-height: 100%;
+}
+
+figure {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+figure img {
+    width: 18%;
+}
+
+#menu-lateral h1 {
+    font-family: DM Serif display;
+    color: var(--c01);
+    font-weight: 500;
+    font-size: 30px;
+}
+
+#imgPerfil {
+    border-radius: 50%;
+    width: 32%;
+    margin-top: 48px;
+    margin-bottom: 10px;
+}
+
+li {
+    list-style-type: none;
+}
+
+#menu-lateral li a {
+    color: var(--c01)   ;
+    text-decoration: none;
+    font-size: 19px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+#selecionado {
+    color: var(--c04);
+}
+
+.bx {
+    font-size: 31px;
+}
+
+#perfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--c01);
+}
+
+#perfil > p {
+    color: rgba(255, 255, 255, 0.781);
+    margin: 2px;
+    font-weight: normal;
+}
+
+#menu-lateral h2 {
+    height: 100%;
+
+    font-weight: 500;
+}
+
+#first-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 79px;
+
+}
+
+#second-hr {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#second-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    margin: 20px;
+}
+
+/* Main */
+
+main {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    width: 55%;
+    height: 100%;
+
+    margin-left: 30px;
+}
+
+/* Titulo */
+
+#titulo {
+    width: 100%;
+
+    margin-top: 10%;
+}
+
+.sub-titulo {
+    color: var(--c04);
+    font-size: 1.5rem;
+}
+
+.gradiente {
+     /* Primeiro passo: definir um degradê como fundo */
+     background-image: linear-gradient(to left, var(--c12), var(--c12), var(--c12), var(--c12), var(--c12), var(--c04));
+    
+     /* Segundo passo: apagar do fundo tudo que não estiver imediatamente atrás de texto */
+     background-clip: text;
+     -webkit-background-clip: text; /* Alguns navegadores precisam do prefixo */
+   
+     /* Terceiro passo: apagar o texto, deixando apenas o fundo atrás dele */
+     -webkit-text-fill-color: transparent;
+   
+     /* Cor que contraste com o degradê, caso o navegador não suporte `background-clip: text` */
+     color: black;
+
+     font-size: 2rem;
+}
+
+/* nav-pags */
+
+#nav-pags {
+    width: 100%;
+
+    margin: 50px 0px 35px 0px;  
+}
+
+#nav-pags > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section > ul > li > a {
+    text-decoration: none;
+
+    color: rgba(31, 52, 64, 0.61);
+
+    font-size: 1.18rem;
+    font-weight: 700;
+}
+
+.selected {
+    position: relative; /* Necessário para o ::after se posicionar corretamente */
+    text-decoration: none; /* Desativa o sublinhado padrão */
+    color: var(--c04);
+}
+
+.selected::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px; /* Alinha o pseudo-elemento na parte inferior */
+    width: 100%;
+    height: 4px; /* Define a espessura do sublinhado */
+    background-color: var(--c11); /* Cor do sublinhado */
+    border-radius: 2px; /* Aplica bordas arredondadas */
+}
+
+/* Lista de Membros */
+
+#member-list {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+#member-list > h2 {
+    color: var(--c04);
+
+    font-size: 1.4rem;
+    font-weight: 700;
+}
+
+table {
+    width: 100%;
+    border-spacing: 0 10px;
+
+
+    margin: 30px 0 0 0;
+}
+
+#table-header {
+    background-color: rgba(242, 207, 135, 0.69);
+    border-radius: 12px 12px 12px 12px;
+
+    text-align: center;
+}
+
+#table-header > th {
+    padding: 8px;
+    border-radius: 12px 0 0 12px;
+}
+
+#table-header > th > img {
+    width: 30px;
+}
+
+.td-final {
+    border-radius: 0 12px 12px 0;
+}
+
+.membros-linha {
+    background-color: white;
+
+    text-align: center;
+
+    height: 40px;
+
+    border-radius: 12px 12px 12px 12px;
+    
+}
+
+.membros-linha > th {
+    padding: 15px 0 15px 0;
+    border-radius: 12px 0 0 12px;
+}
+
+.membros-linha > th > img {
+    width: 30px;
+}
+
+.membros-foto {
+    width: 45px;
+}
+
+/* Aside */
+
+aside {
+    background-image: url(../img/bglateral.png);
+    background-repeat: no-repeat;
+
+    width: 28%;
+    margin-left: 40px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly ;
+    align-items: center;
+}   
+
+aside > h1 {
+    color:  var(--c04);
+
+    margin-left: -12%;
+
+    font-weight: bolder;
+}
+
+aside > h1 > b {
+    color: var(--c12);
+}
+
+#frequencia-img  {
+    width: 80%;
+    height: 30%;
+    object-fit: cover;
+}
+
+#total-img {
+    width: 80%;
+    object-fit: cover;
+}

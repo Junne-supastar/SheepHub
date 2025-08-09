@@ -1,0 +1,557 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --c01: #ffffff;
+    --c02: #000000;
+    --c03: #7BAEC2;
+    --c04: #1f3440;
+    --c05: rgba(255, 245, 159, 0.7);
+    --c06: rgba(240, 186, 74, 0.7);
+    --c07: rgba(255, 255, 255, 0.620);
+    --c08: #447633;
+    --c09: #B72F2F;
+    --c10: #6B5A38;
+    --c11: #F2CF87;
+    --c12: #61B4E3;
+    --c13: #FCB628;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f7f7f7;
+}
+
+/* menu lateral */
+
+#menu-lateral {
+    background-color: var(--c03);
+    width: 17%;
+    height: 100vh;
+    position: fixed;
+}
+
+#logo-menu {
+    margin-left: 30px;
+}
+
+figure {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+figure img {
+    width: 16%;
+}
+
+#menu-lateral h1 {
+    font-family: DM Serif display;
+    color: var(--c01);
+    font-weight: 500;
+    font-size: 30px;
+}
+
+#imgPerfil {
+    border-radius: 50%;
+    width: 25%;
+    margin-top: 48px;
+}
+
+li {
+    list-style-type: none;
+}
+
+#menu-lateral li a {
+    color: var(--c01);
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+.selecionado {
+    color: var(--c04);
+}
+
+.nav-seleciona {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 5px;
+}
+
+.nav-seleciona:hover {
+    color: var(--c04);
+    transition: 0.3s;
+}
+
+.bx {
+    font-size: 28px;
+}
+
+#perfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--c01);
+}
+
+#menu-lateral h2 {
+    font-weight: 500;
+}
+
+nav {
+    margin-top: 19%;
+    margin-left: 32px;
+}
+
+#second-hr {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#second-nav {
+    margin-top: 0px;
+}
+
+/* main */
+
+main {
+    margin-left: 18%;
+    width: 50%;
+    padding: 10px;
+}
+
+#welcome {
+    margin-top: 5%;
+    font-size: 1.17em;
+}
+
+h3{
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+h2{
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    unicode-bidi: isolate;
+}
+
+
+#gradiente {
+    /* Primeiro passo: definir um degradê como fundo */
+    background-image: linear-gradient(to left, var(--c12), var(--c12), var(--c12), var(--c12), var(--c12), var(--c04));
+
+    /* Segundo passo: apagar do fundo tudo que não estiver imediatamente atrás de texto */
+    background-clip: text;
+    -webkit-background-clip: text;
+    /* Alguns navegadores precisam do prefixo */
+
+    /* Terceiro passo: apagar o texto, deixando apenas o fundo atrás dele */
+    -webkit-text-fill-color: transparent;
+
+    /* Cor que contraste com o degradê, caso o navegador não suporte `background-clip: text` */
+    color: ;
+}
+
+
+main nav ul {
+    display: flex;
+    flex-direction: row;
+}
+
+#area-cards {
+    display: flex;
+    margin-top: 20px;
+    gap: 20px;
+    width: 830px;
+}
+
+#nav-paginas {
+    margin-left: 0;
+    margin-top: 30px;
+}
+
+main nav ul a {
+    text-decoration: none;
+    color: var(--c04);
+    font-weight: 600;
+}
+
+.selected {
+    position: relative;
+    /* Necessário para o ::after se posicionar corretamente */
+    text-decoration: none;
+    /* Desativa o sublinhado padrão */
+}
+
+.selected::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    /* Alinha o pseudo-elemento na parte inferior */
+    width: 100%;
+    height: 4px;
+    /* Define a espessura do sublinhado */
+    background-color: var(--c11);
+    /* Cor do sublinhado */
+    border-radius: 2px;
+    /* Aplica bordas arredondadas */
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: var(--c01);
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    height: 180px;
+    width: 270px;
+    background-image: linear-gradient(to left, var(--c05), var(--c06));
+    color: var(--c01);
+}
+
+main,
+aside {
+    height: 100vh;
+}
+
+span {
+    background-color: var(--c07);
+    color: var(--c08);
+    width: 66px;
+    height: 24px;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+#negativo {
+    color: var(--c09);
+}
+
+.valorfinanca {
+    color: var(--c10);
+}
+
+.iconefinanca {
+    width: 44px;
+    height: 44px;
+}
+
+#grafico-area {
+    margin-top: 5%;
+}
+
+#grafico-area img {
+    width: 100%;
+}
+
+/* aside */
+
+#atv-area img {
+    width: 89%;
+    margin: auto;
+    display: block;
+    margin-top: 15%;
+    margin-bottom: 30%;
+}
+
+aside {
+    background-image: url(../img/bglateral.png);
+    background-repeat: no-repeat;
+    width: 310px;
+    height: 100vh;
+    position: fixed;
+    left: 78%;
+}
+
+aside h2 {
+    font-size: 16px;
+}
+
+.goal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.goal img {
+    width: 18%;
+}
+
+.progresso {
+    display: flex;
+    flex-direction: column;
+}
+
+#objetivos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#objetivos h2 {
+    width: 89%;
+    margin: auto;
+    display: block;
+}
+
+
+/* demandas */
+
+.card-demanda {
+    display: flex;
+    flex-direction: column;
+
+    width: 180px;
+    height: 250px;
+    box-shadow: 0px 0px 5px #0000002d;
+    background-color: var(--c01);
+    border-radius: 15px;
+    background-image: url(../img/trocinhos.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: center;
+}
+
+i img {
+    width: 100px;
+    object-fit: cover;
+    margin-top: 20px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    gap: 70px;
+    padding-top: 15px;
+  
+    height: 85%;
+    width: 780px;
+    margin-left: 0;
+}
+
+.botao {
+    background-color: var(--c13);
+    padding: 0.5em 1.5em;
+    color: var(--c01);
+    border-radius: 15px;
+    transition: 0.5s ease;
+
+}
+
+.botao:hover {
+    background-color: #dda22d;
+}
+
+fieldset{
+    width: fit-content;
+    height: 10px;
+
+    margin-bottom: 365px;
+    /* border: 0; */
+}
+
+
+#view-area img{
+    width: 20px;
+    
+}
+
+#view-area div {
+    display: flex;
+    flex-direction: row;
+    align-items: center ;
+    height: 40px;
+    font-weight: bold;
+    margin-left: 6%;
+    
+    
+}
+
+#view-area{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: baseline;
+margin-bottom: 50px;
+
+margin-top: 20px;
+}
+
+#view-area p {
+    margin-top: 15px;
+}
+
+
+#red{
+    color: var(--c09);
+    background-color: transparent;
+
+   
+}
+
+#blue{
+    background-color: transparent;
+    color: var(--c12);
+
+}
+
+#total-membros{
+    width: 280px;
+    margin-left: 15px;
+}
+
+.membro{
+    background-color: var(--c01) ;
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    padding: 1rem;
+    margin-left: 15px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+
+.info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.info p{
+    margin-top: 10px;
+}
+.info img{
+    width: 50px;
+    object-fit: cover;
+}
+button{
+    border: 0;
+    width: fit-content;
+    font-weight: bold;
+    
+    display: flex;
+    gap: 0.5rem ;
+    background-color: #61b3e335;
+    padding: 0.4rem;
+    border-radius: 12px;
+
+    margin-top: 1rem;
+    margin-left: 5px;
+}
+button p{
+    margin-top: 1px;
+    color: var(--c12);
+}
+
+button img{ 
+    width: 20px;
+
+}
+
+
+/* ver mais */
+.escuro{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.479);
+    z-index: 10;
+}
+
+.infos-membra{
+    background-color: var(--c01);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+   width: 500px;
+    margin: auto;
+    z-index: 11;
+}
+/* responsividade do menu lateral */
+
+@media screen and (max-width:1340px) {
+
+    #first-nav p,
+    figure h1,
+    #perfil h2,
+    #perfil p,
+    #second-nav p {
+        display: none;
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    figure {
+        margin-left: 0;
+    }
+
+    nav {
+        margin-left: 0;
+    }
+
+    .card-demanda{
+        width: 200px;
+        height: 250px;
+    }
+}
