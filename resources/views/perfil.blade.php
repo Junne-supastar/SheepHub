@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="css/perfil.css">
 @section('title', 'Perfil - SheepHub')
 
-@section('content')
 <section class="conteudo">
   <form class="content-wrapper">
     <div class="perfil">
