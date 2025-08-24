@@ -14,7 +14,7 @@
         <p class="residente">
           <a href="https://www.google.com/maps?q=1ª Igreja do Nazareno em Nilópolis" target="_blank">
             <img src="{{ asset('img/igreja.png') }}" alt="" class="iconeigrj" />
-          </a>
+          <
           <a href="https://www.google.com/maps?q=1ª Igreja do Nazareno em Nilópolis" target="_blank" class="nomeigreja">
             Primeira Igreja do Nazareno em Nilópolis
           </a>
