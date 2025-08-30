@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Dashboard - Membros</title>
-    <link rel="stylesheet" href="{{ asset('css/membros.css') }}" />
+    <link rel="stylesheet" href="css/membros.css" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
 </head>
 
@@ -33,31 +33,31 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="item">
+                    <a href="{{ route('notificacoes') }}" class="item">
                         <i class='bx bxs-bell'></i>
                         <p>Notificações</p>
                     </a>
                 </li>
                 <li>
-                    <a href="" class="item">
+                    <a href="{{ route('mensagens') }}" class="item">
                         <i class='bx bxs-message-rounded-dots'></i>
                         <p>Mensagens</p>
                     </a>
                 </li>
                 <li>
-                    <a href="" class="item">
+                    <a href="{{ route('postar') }}" class="item">
                         <i class='bx bxs-plus-circle'></i>
                         <p>Postar</p>
                     </a>
                 </li>
                 <li>
-                    <a href="" id="selecionado" class="item">
+                    <a href="{{ route('dashboard') }}" id="selecionado" class="item">
                         <i class='bx bxs-church'></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="" class="item">
+                    <a href="{{ route('perfil') }}" class="item">
                         <i class='bx bxs-user'></i>
                         <p>Meu perfil</p>
                     </a>
@@ -70,7 +70,7 @@
         <nav id="second-nav">
             <ul>
                 <li>
-                    <a href="" class="item">
+                    <a href="{{ route('configuracoes') }}" class="item">
                         <i class='bx bxs-cog'></i>
                         <p>Configurações</p>
                     </a>
@@ -93,9 +93,9 @@
 
         <section id="nav-pags">
             <ul>
-                <li><a href="">Dízimos e ofertas</a></li>
-                <li><a href="" class="selected">Membros</a></li>
-                <li><a href="">Demandas</a></li>
+                <li><a href="{{ route('financas') }}">Dízimos e ofertas</a></li>
+                <li><a href="{{ route('membros') }}" class="selected">Membros</a></li>
+                <li><a href="{{ route('demandas') }}">Demandas</a></li>
             </ul>
         </section>
 

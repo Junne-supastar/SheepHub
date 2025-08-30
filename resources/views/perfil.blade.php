@@ -1,7 +1,8 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="css/perfil.css">
+<link rel="stylesheet" href="{{ asset('css/perfil.css') }}">
 @section('title', 'Perfil - SheepHub')
 
+@section('content')
 <section class="conteudo">
   <form class="content-wrapper">
     <div class="perfil">
@@ -14,7 +15,7 @@
         <p class="residente">
           <a href="https://www.google.com/maps?q=1ª Igreja do Nazareno em Nilópolis" target="_blank">
             <img src="{{ asset('img/igreja.png') }}" alt="" class="iconeigrj" />
-          <
+          </a>
           <a href="https://www.google.com/maps?q=1ª Igreja do Nazareno em Nilópolis" target="_blank" class="nomeigreja">
             Primeira Igreja do Nazareno em Nilópolis
           </a>
