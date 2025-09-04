@@ -1,0 +1,53 @@
+
+
+aside {
+    background-color: #ECF2F5;
+
+    margin-left: 2.5rem;
+    width: 35%;
+
+    text-align: center;
+}
+
+aside > h1 {
+    margin: 20px;
+
+    color: var(--c04);
+    font-weight: var(--bold);
+}
+
+aside > a:hover{
+    text-decoration: none;
+}
+
+aside > a > article {
+    display: flex;
+    align-items: center;
+
+    margin: 20px;
+}
+
+aside > a > article > img {
+    object-fit: contain;
+    height: 70px;
+    width: 85px;
+}
+
+aside > a > article > div > h2 {
+    font-size: var(--semibold);
+    font-weight: bold;
+
+    margin: 0;
+}
+
+aside > a > article > div > p {
+    line-height: normal;
+
+    color: #1f3440;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+}
+
