@@ -6,13 +6,12 @@ CREATE DATABASE IF NOT EXISTS `sheephub`;
 USE `sheephub`;
 
 -- =====================
--- TABELA USUÁRIO
+-- 1. NIVEIS_USUARIO
 -- =====================
-
 CREATE TABLE niveis_usuario (
     id_nivelusu INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    descricao VARCHAR(255)
+    nome VARCHAR(30) NOT NULL,
+    descricao VARCHAR(100)
 );
 
 INSERT INTO niveis_usuario (nome, descricao) VALUES
@@ -22,18 +21,13 @@ INSERT INTO niveis_usuario (nome, descricao) VALUES
 ('Membro', 'Usuário regular da igreja'),
 ('Visitante', 'Apenas visualiza informações públicas');
 
-
 -- =====================
--- mudar nome status
--- verificar hierarquia
--- ajeitar chaves estrangeiras
--- ver se da para deixar o cep com char ou varchar ao invés de int
--- ajeitar a quantidade de caracteres nos varchar (nosso banco não precisa ficar tão pesado)
+-- 2. STATUS
 -- =====================
 CREATE TABLE status (
     id_status INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(50) NOT NULL,
-    descricao VARCHAR(255)
+    nome VARCHAR(20) NOT NULL,
+    descricao VARCHAR(100)
 );
 
 INSERT INTO status (nome, descricao) VALUES
@@ -42,385 +36,304 @@ INSERT INTO status (nome, descricao) VALUES
 ('Pendente', 'Aguardando confirmação'),
 ('Excluído', 'Removido logicamente do sistema');
 
-CREATE TABLE IF NOT EXISTS usuario (
-  `idusuario` INT NOT NULL AUTO_INCREMENT,
-  `id_status` int,
-  `email` VARCHAR(100) NOT NULL,
-  `senha` VARCHAR(255) NOT NULL,
-  `telefone` VARCHAR(30),
-  `nivel` VARCHAR(1),
-  PRIMARY KEY (`idusuario`)
-) ENGINE = InnoDB;
+-- =====================
+-- 3. LOCALIDADE
+-- =====================
+CREATE TABLE localidade (
+    cep CHAR(8) NOT NULL,
+    logradouro VARCHAR(60),
+    bairro VARCHAR(40),
+    cidade VARCHAR(30),
+    uf CHAR(2) NOT NULL,
+    PRIMARY KEY (cep)
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA PERFIL
+-- 4. USUARIO
 -- =====================
-
-CREATE TABLE IF NOT EXISTS localidade (
-  `cep` INT NOT NULL,
-   logradouro varchar(60), 
-   bairro varchar(40) ,
-   cidade varchar(30),
-   uf char(2),
-  PRIMARY KEY (`cep`)
-) ENGINE = InnoDB;
-
-CREATE TABLE IF NOT EXISTS perfil (
-  `idperfil` INT NOT NULL AUTO_INCREMENT,
-  `idusuario` INT NOT NULL,
-  `cep` INT NOT NULL,
-  `foto_perfil` VARCHAR(255),
-  `data_criacao` DATE,
-  `atividade` BOOLEAN,
-   PRIMARY KEY (idperfil),
-  INDEX (idusuario),
-  CONSTRAINT fk_perfil_usuario FOREIGN KEY (idusuario)
-    REFERENCES usuario (idusuario)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT fk_perfil_status FOREIGN KEY (id_status)
-    REFERENCES status(id_status)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-	CONSTRAINT fk_perfil_localidade FOREIGN KEY (cep)
-    REFERENCES localidade(cep)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
-
-INSERT INTO usuario (atividade, email, senha, telefone, nivel)
-VALUES (1, 'juli@gmail.com', '123', '21333', '1');
+CREATE TABLE usuario (
+    idusuario INT NOT NULL AUTO_INCREMENT,
+    id_status INT NOT NULL,
+    email VARCHAR(80) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    telefone CHAR(11),
+    data_nascimento date,
+    user_name varchar(80),
+    nivel INT NOT NULL,
+    atividade TINYINT(1),
+    PRIMARY KEY (idusuario),
+    CONSTRAINT fk_usuario_nivel FOREIGN KEY (nivel) REFERENCES niveis_usuario(id_nivelusu),
+    CONSTRAINT fk_usuario_status FOREIGN KEY (id_status) REFERENCES status(id_status)
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA IGREJA
+-- 5. PERFIL
 -- =====================
-
-
-CREATE TABLE IF NOT EXISTS igreja (
-  `idigreja` INT NOT NULL AUTO_INCREMENT,
-  `cep` INT NOT NULL,
-  `idperfil` INT NOT NULL,
-  `numero` VARCHAR(3),
-  `cnpj` VARCHAR(50),
-  `complemento` VARCHAR(50),
-  `denominacao` VARCHAR(45),
-  `telefone` VARCHAR(45),
-  PRIMARY KEY (`idigreja`),
-  INDEX `fk_igreja_perfil1_idx` (`perfil_idperfil` ASC),
-  CONSTRAINT `fk_igreja_perfil1`
-    FOREIGN KEY (`perfil_idperfil`)
-    REFERENCES `sheephub`.`perfil` (`idperfil`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE perfil (
+    idperfil INT NOT NULL AUTO_INCREMENT,
+    idusuario INT NOT NULL,
+    id_status INT,
+    cep CHAR(8) NOT NULL,
+    foto_perfil VARCHAR(150),
+    data_criacao DATETIME,
+    PRIMARY KEY (idperfil),
+    CONSTRAINT fk_perfil_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_perfil_status FOREIGN KEY (id_status) REFERENCES status(id_status) ON DELETE SET NULL ON UPDATE CASCADE,
+    CONSTRAINT fk_perfil_localidade FOREIGN KEY (cep) REFERENCES localidade(cep) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA MEMBRO
+-- 6. IGREJA
 -- =====================
-CREATE TABLE IF NOT EXISTS membro (
-  `idmembro` INT NOT NULL AUTO_INCREMENT,
-  `usuario_idusuario` INT NOT NULL,
-  PRIMARY KEY (`idmembro`),
-  INDEX `fk_membro_usuario_idx` (`usuario_idusuario` ASC),
-  CONSTRAINT `fk_membro_usuario`
-    FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `sheephub`.`usuario` (`idusuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE igreja (
+    idigreja INT NOT NULL AUTO_INCREMENT,
+    cep CHAR(8) NOT NULL,
+    idperfil INT NOT NULL,
+    numero VARCHAR(5),
+    cnpj CHAR(14),
+    complemento VARCHAR(50),
+    denominacao VARCHAR(40),
+    telefone CHAR(11),
+    PRIMARY KEY (idigreja),
+    CONSTRAINT fk_igreja_perfil FOREIGN KEY (idperfil) REFERENCES perfil(idperfil) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_igreja_localidade FOREIGN KEY (cep) REFERENCES localidade(cep) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA COMENTARIO
+-- 7. DEPARTAMENTO (opcional)
 -- =====================
-CREATE TABLE IF NOT EXISTS comentario (
-  `idcomentario` INT NOT NULL AUTO_INCREMENT,
-  `usuario_idusuario` INT NOT NULL,
-  `data_comentario` DATE,
-  `conteudo` TEXT,
-  PRIMARY KEY (`idcomentario`),
-  INDEX `fk_comentario_usuario1_idx` (`usuario_idusuario` ASC),
-  CONSTRAINT `fk_comentario_usuario1`
-    FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `sheephub`.`usuario` (`idusuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE departamento (
+    id_departamento INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(40),
+    idigreja INT NOT NULL,
+    PRIMARY KEY (id_departamento),
+    CONSTRAINT fk_departamento_igreja FOREIGN KEY (idigreja) REFERENCES igreja(idigreja) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA CURTIDA_COMENTARIO
+-- 8. PERMISSAO
 -- =====================
-CREATE TABLE IF NOT EXISTS curtida_comentario (
-  `comentario_idcomentario` INT NOT NULL,
-  `usuario_idusuario` INT NOT NULL,
-  `data_curtida` DATE,
-  PRIMARY KEY (`comentario_idcomentario`, `usuario_idusuario`),
-  CONSTRAINT `fk_curtida_comentario_comentario1`
-    FOREIGN KEY (`comentario_idcomentario`)
-    REFERENCES `sheephub`.`comentario` (`idcomentario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_curtida_comentario_usuario1`
-    FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `sheephub`.`usuario` (`idusuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE permissao (
+    id_permissao INT NOT NULL AUTO_INCREMENT,
+    idigreja INT NOT NULL,
+    idusuario INT NOT NULL,
+    data_permissao DATETIME,
+    id_status INT NOT NULL,
+    PRIMARY KEY (id_permissao),
+    CONSTRAINT fk_permissao_igreja FOREIGN KEY (idigreja) REFERENCES igreja(idigreja) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_permissao_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_permissao_status FOREIGN KEY (id_status) REFERENCES status(id_status) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA MENSAGEM
+-- 9. EVENTOS
 -- =====================
-CREATE TABLE IF NOT EXISTS mensagem (
-  `idmensagem` INT NOT NULL AUTO_INCREMENT,
-  `destinatario` VARCHAR(100),
-  `remetente` VARCHAR(100),
-  `data_mensagem` DATE,
-  `usuario_idusuario` INT NOT NULL,
-  `conteudo` TEXT,
-  `arquivo` VARCHAR(255),
-  PRIMARY KEY (`idmensagem`),
-  INDEX `fk_mensagem_usuario1_idx` (`usuario_idusuario` ASC),
-  CONSTRAINT `fk_mensagem_usuario1`
-    FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `sheephub`.`usuario` (`idusuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE eventos (
+    ideventos INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(50),
+    descricao VARCHAR(150),
+    tipo VARCHAR(20),
+    data_criacao DATETIME,
+    cep CHAR(8) NOT NULL,
+    PRIMARY KEY (ideventos),
+    CONSTRAINT fk_eventos_localidade FOREIGN KEY (cep) REFERENCES localidade(cep) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA LOCALIDADE
+-- 10. EVENTOS_IGREJA
 -- =====================
-
-
--- =====================
--- TABELA POSTAGEM
--- =====================
-CREATE TABLE IF NOT EXISTS postagem (
-  `idpostagem` INT NOT NULL AUTO_INCREMENT,
-  `conteudo` TEXT,
-  `arquivo` VARCHAR(255),
-  `data_postagem` DATETIME,
-  PRIMARY KEY (`idpostagem`)
-) ENGINE = InnoDB;
+CREATE TABLE eventos_igreja (
+    ideventos_igreja INT NOT NULL AUTO_INCREMENT,
+    ideventos INT NOT NULL,
+    idigreja INT NOT NULL,
+    PRIMARY KEY (ideventos_igreja),
+    CONSTRAINT fk_eventos_igreja_eventos FOREIGN KEY (ideventos) REFERENCES eventos(ideventos) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_eventos_igreja_igreja FOREIGN KEY (idigreja) REFERENCES igreja(idigreja) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA CURTIDA_POST
+-- 11. USUARIO_IGREJA (substitui membro)
 -- =====================
-CREATE TABLE IF NOT EXISTS curtida_post (
-  `usuario_idusuario` INT NOT NULL,
-  `postagem_idpostagem` INT NOT NULL,
-  PRIMARY KEY (`usuario_idusuario`, `postagem_idpostagem`),
-  CONSTRAINT `fk_usuario_has_postagem_usuario1`
-    FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `sheephub`.`usuario` (`idusuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_has_postagem_postagem1`
-    FOREIGN KEY (`postagem_idpostagem`)
-    REFERENCES `sheephub`.`postagem` (`idpostagem`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE usuario_igreja (
+    idusuario INT NOT NULL,
+    idigreja INT NOT NULL,
+    papel VARCHAR(20) DEFAULT 'Membro',
+    PRIMARY KEY (idusuario, idigreja),
+    CONSTRAINT fk_usuario_igreja_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_usuario_igreja_igreja FOREIGN KEY (idigreja) REFERENCES igreja(idigreja) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA PLANO
+-- 12. CONFIRMACAO
 -- =====================
-CREATE TABLE IF NOT EXISTS plano (
-  `id_plano` INT NOT NULL AUTO_INCREMENT,
-  `igreja_idigreja` INT NOT NULL,
-  `valor` VARCHAR(45),
-  `pago` VARCHAR(45),
-  PRIMARY KEY (`id_plano`),
-  CONSTRAINT `fk_plano_igreja1`
-    FOREIGN KEY (`igreja_idigreja`)
-    REFERENCES `sheephub`.`igreja` (`idigreja`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE confirmacao (
+    idconfirmacao INT NOT NULL AUTO_INCREMENT,
+    ideventos INT NOT NULL,
+    idusuario INT NOT NULL,
+    id_status INT NOT NULL,
+    data_confirm DATETIME,
+    PRIMARY KEY (idconfirmacao),
+    CONSTRAINT fk_confirmacao_eventos FOREIGN KEY (ideventos) REFERENCES eventos(ideventos) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_confirmacao_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_confirmacao_status FOREIGN KEY (id_status) REFERENCES status(id_status) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA OFERTAS
+-- 13. POSTAGEM, COMENTARIO, CURTIDAS
 -- =====================
-CREATE TABLE IF NOT EXISTS ofertas (
-  `id_oferta` INT NOT NULL AUTO_INCREMENT,
-  `data_oferta` DATE,
-  `valor` VARCHAR(45),
-  `igreja_idigreja` INT NOT NULL,
-  `forma_pagamento` VARCHAR(45),
-  `descricao` VARCHAR(45),
-  PRIMARY KEY (`id_oferta`),
-  CONSTRAINT `fk_ofertas_igreja1`
-    FOREIGN KEY (`igreja_idigreja`)
-    REFERENCES `sheephub`.`igreja` (`idigreja`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE postagem (
+    idpostagem INT NOT NULL AUTO_INCREMENT,
+    idusuario INT NOT NULL,
+    conteudo TEXT,
+    arquivo VARCHAR(150),
+    data_postagem DATETIME,
+    PRIMARY KEY (idpostagem),
+    CONSTRAINT fk_postagem_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE comentario (
+    idcomentario INT NOT NULL AUTO_INCREMENT,
+    idpostagem INT NOT NULL,
+    idusuario INT NOT NULL,
+    data_comentario DATETIME,
+    conteudo TEXT,
+    PRIMARY KEY (idcomentario),
+    CONSTRAINT fk_comentario_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_comentario_postagem FOREIGN KEY (idpostagem) REFERENCES postagem(idpostagem) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE curtida_post (
+    idusuario INT NOT NULL,
+    idpostagem INT NOT NULL,
+    PRIMARY KEY (idusuario, idpostagem),
+    CONSTRAINT fk_curtida_post_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_curtida_post_postagem FOREIGN KEY (idpostagem) REFERENCES postagem(idpostagem) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE curtida_comentario (
+    idcomentario INT NOT NULL,
+    idusuario INT NOT NULL,
+    data_curtida DATETIME,
+    PRIMARY KEY (idcomentario, idusuario),
+    CONSTRAINT fk_curtida_comentario FOREIGN KEY (idcomentario) REFERENCES comentario(idcomentario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_curtida_comentario_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA DESPESAS
+-- 14. MENSAGEM
 -- =====================
-CREATE TABLE IF NOT EXISTS despesas (
-  `id_despesa` INT NOT NULL AUTO_INCREMENT,
-  `descricao` VARCHAR(45),
-  `valor` VARCHAR(45),
-  `forma_pagamento` VARCHAR(45),
-  `igreja_idigreja` INT NOT NULL,
-  PRIMARY KEY (`id_despesa`),
-  CONSTRAINT `fk_despesas_igreja1`
-    FOREIGN KEY (`igreja_idigreja`)
-    REFERENCES `sheephub`.`igreja` (`idigreja`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE mensagem (
+    idmensagem INT NOT NULL AUTO_INCREMENT,
+    remetente INT NOT NULL,
+    destinatario INT NOT NULL,
+    data_mensagem DATETIME,
+    conteudo TEXT,
+    arquivo VARCHAR(150),
+    PRIMARY KEY (idmensagem),
+    CONSTRAINT fk_mensagem_remetente FOREIGN KEY (remetente) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_mensagem_destinatario FOREIGN KEY (destinatario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA DEPARTAMENTO
+-- 15. PLANO, OFERTAS, DESPESAS
 -- =====================
-CREATE TABLE IF NOT EXISTS departamento (
-  `id_departamento` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(45),
-  `igreja_idigreja` INT NOT NULL,
-  `atividade` VARCHAR(45),
-  PRIMARY KEY (`id_departamento`),
-  CONSTRAINT `fk_departamento_igreja1`
-    FOREIGN KEY (`igreja_idigreja`)
-    REFERENCES `sheephub`.`igreja` (`idigreja`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE plano (
+    id_plano INT NOT NULL AUTO_INCREMENT,
+    idigreja INT NOT NULL,
+    valor DECIMAL(10,2),
+    pago VARCHAR(20),
+    PRIMARY KEY (id_plano),
+    CONSTRAINT fk_plano_igreja FOREIGN KEY (idigreja) REFERENCES igreja(idigreja) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE ofertas (
+    id_oferta INT NOT NULL AUTO_INCREMENT,
+    data_oferta DATETIME,
+    valor DECIMAL(10,2),
+    idigreja INT NOT NULL,
+    forma_pagamento VARCHAR(20),
+    descricao VARCHAR(100),
+    PRIMARY KEY (id_oferta),
+    CONSTRAINT fk_ofertas_igreja FOREIGN KEY (idigreja) REFERENCES igreja(idigreja) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE despesas (
+    id_despesa INT NOT NULL AUTO_INCREMENT,
+    descricao VARCHAR(100),
+    valor DECIMAL(10,2),
+    forma_pagamento VARCHAR(20),
+    idigreja INT NOT NULL,
+    PRIMARY KEY (id_despesa),
+    CONSTRAINT fk_despesas_igreja FOREIGN KEY (idigreja) REFERENCES igreja(idigreja) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA SEGUINDO
+-- 16. SEGUINDO
 -- =====================
-CREATE TABLE IF NOT EXISTS seguindo (
-  `id_seguidor` INT NOT NULL,
-  `id_seguido` INT NOT NULL,
-  PRIMARY KEY (`id_seguidor`, `id_seguido`),
-  CONSTRAINT `fk_usuario_has_usuario_usuario1`
-    FOREIGN KEY (`id_seguidor`)
-    REFERENCES `sheephub`.`usuario` (`idusuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_usuario_has_usuario_usuario2`
-    FOREIGN KEY (`id_seguido`)
-    REFERENCES `sheephub`.`usuario` (`idusuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE seguindo (
+    id_seguidor INT NOT NULL,
+    id_seguido INT NOT NULL,
+    tipo VARCHAR(20) DEFAULT 'amigo',
+    PRIMARY KEY (id_seguidor, id_seguido),
+    CONSTRAINT fk_seguindo_seguidor FOREIGN KEY (id_seguidor) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_seguindo_seguido FOREIGN KEY (id_seguido) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA PERMISSAO
+-- 17. NOTIFICACAO
 -- =====================
-CREATE TABLE IF NOT EXISTS permissao (
-  `id_permissao` INT NOT NULL AUTO_INCREMENT,
-  `igreja_idigreja` INT NOT NULL,
-  `usuario_idusuario` INT NOT NULL,
-  `data_permissao` DATETIME,
-  `status` VARCHAR(45),
-  PRIMARY KEY (`id_permissao`),
-  CONSTRAINT `fk_igreja_has_usuario_igreja1`
-    FOREIGN KEY (`igreja_idigreja`)
-    REFERENCES `sheephub`.`igreja` (`idigreja`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_igreja_has_usuario_usuario1`
-    FOREIGN KEY (`usuario_idusuario`)
-    REFERENCES `sheephub`.`usuario` (`idusuario`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE notificacao (
+    idnotificacao INT NOT NULL AUTO_INCREMENT,
+    data_notificacao DATETIME,
+    tipo VARCHAR(50),
+    PRIMARY KEY (idnotificacao)
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA NOTIFICACAO
+-- 18. CONFIGURACAO_NOTIFICACAO
 -- =====================
-CREATE TABLE IF NOT EXISTS notificacao (
-  `idnotificacao` INT NOT NULL AUTO_INCREMENT,
-  `data_notificacao` DATETIME,
-  `tipo` VARCHAR(45),
-  PRIMARY KEY (`idnotificacao`)
-) ENGINE = InnoDB;
+CREATE TABLE configuracao_notificacao (
+    idperfil INT NOT NULL,
+    idnotificacao INT NOT NULL,
+    recebe_email BOOLEAN,
+    recebe_push BOOLEAN,
+    PRIMARY KEY (idperfil, idnotificacao),
+    CONSTRAINT fk_config_notificacao_perfil FOREIGN KEY (idperfil) REFERENCES perfil(idperfil) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_config_notificacao_notificacao FOREIGN KEY (idnotificacao) REFERENCES notificacao(idnotificacao) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA CONFIGURACAO_NOTIFICACAO
+-- HISTORICO_EVENTOS
 -- =====================
-CREATE TABLE IF NOT EXISTS configuracao_notificacao (
-  `perfil_idperfil` INT NOT NULL,
-  `notificacao_idnotificacao` INT NOT NULL,
-  `recebe_email` VARCHAR(3),
-  `recebe_push` VARCHAR(3),
-  PRIMARY KEY (`perfil_idperfil`, `notificacao_idnotificacao`),
-  CONSTRAINT `fk_perfil_has_notificacao_perfil1`
-    FOREIGN KEY (`perfil_idperfil`)
-    REFERENCES `sheephub`.`perfil` (`idperfil`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_perfil_has_notificacao_notificacao1`
-    FOREIGN KEY (`notificacao_idnotificacao`)
-    REFERENCES `sheephub`.`notificacao` (`idnotificacao`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE historico_eventos (
+    id_historico_eventos INT NOT NULL AUTO_INCREMENT,
+    ideventos INT NOT NULL,
+    usuario_idusuario INT NOT NULL,
+    acao ENUM('criado','editado','excluido') NOT NULL,
+    data_acao DATETIME NOT NULL,
+    descricao_alteracao TEXT,
+    PRIMARY KEY (id_historico_eventos),
+    CONSTRAINT fk_hist_eventos_evento FOREIGN KEY (ideventos) REFERENCES eventos(ideventos) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_hist_eventos_usuario FOREIGN KEY (usuario_idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
 -- =====================
--- TABELA EVENTOS
+-- HISTORICO_FINANCEIRO
 -- =====================
-CREATE TABLE IF NOT EXISTS eventos (
-  `ideventos` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(50),
-  `descricao` VARCHAR(255),
-  `tipo` VARCHAR(45),
-  `data_criacao` DATETIME,
-  `numero_eventos` VARCHAR(45),
-  `complemento_eventos` VARCHAR(45),
-  `localidade_cep` INT NOT NULL,
-  PRIMARY KEY (`ideventos`),
-  CONSTRAINT `fk_eventos_localidade1`
-    FOREIGN KEY (`localidade_cep`)
-    REFERENCES `sheephub`.`localidade` (`cep`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
+CREATE TABLE historico_financeiro (
+    id_historico_financeiro INT NOT NULL AUTO_INCREMENT,
+    tipo_registro ENUM('plano','oferta','despesa') NOT NULL,
+    id_registro INT NOT NULL,
+    usuario_idusuario INT NOT NULL,
+    valor_anterior DECIMAL(10,2),
+    valor_novo DECIMAL(10,2),
+    acao ENUM('criado','editado','excluido') NOT NULL,
+    data_acao DATETIME NOT NULL,
+    descricao_alteracao TEXT,
+    PRIMARY KEY (id_historico_financeiro),
+    CONSTRAINT fk_hist_fin_usuario FOREIGN KEY (usuario_idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
 
--- =====================
--- TABELA EVENTOS_IGREJA
--- =====================
-CREATE TABLE IF NOT EXISTS eventos_igreja (
-  `ideventos_igreja` VARCHAR(45) NOT NULL,
-  `eventos_ideventos` INT NOT NULL,
-  `igreja_idigreja` INT,
-  PRIMARY KEY (`ideventos_igreja`),
-  CONSTRAINT `fk_eventos_has_igreja_eventos1`
-    FOREIGN KEY (`eventos_ideventos`)
-    REFERENCES `sheephub`.`eventos` (`ideventos`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_eventos_has_igreja_igreja1`
-    FOREIGN KEY (`igreja_idigreja`)
-    REFERENCES `sheephub`.`igreja` (`idigreja`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
-
--- =====================
--- TABELA CONFIRMACAO
--- =====================
-CREATE TABLE IF NOT EXISTS confirmacao (
-  `idconfirmacao` INT NOT NULL AUTO_INCREMENT,
-  `eventos_ideventos` INT NOT NULL,
-  `membro_idmembro` INT NOT NULL,
-  `data_confirm` DATETIME,
-  `status` VARCHAR(45),
-  PRIMARY KEY (`idconfirmacao`),
-  CONSTRAINT `fk_confirmacao_eventos1`
-    FOREIGN KEY (`eventos_ideventos`)
-    REFERENCES `sheephub`.`eventos` (`ideventos`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
-  CONSTRAINT `fk_confirmacao_membro1`
-    FOREIGN KEY (`membro_idmembro`)
-    REFERENCES `sheephub`.`membro` (`idmembro`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE
-) ENGINE = InnoDB;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
