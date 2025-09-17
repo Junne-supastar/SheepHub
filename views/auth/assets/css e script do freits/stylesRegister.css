@@ -1,0 +1,194 @@
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f0f0f0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* IMPORTANTE! Para que o ::before funcione */
+  overflow: hidden;
+}
+
+/* Novo fundo azul com forma diagonal */
+.diagonal-background {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background-color: #fff;
+  clip-path: polygon(15% 0, 100% 0, 100% 100%, 25% 100%);
+  z-index: 0;
+}
+
+.register-wrapper {
+  width: 90%;
+  max-width: 960px;
+  height: 540px;
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  background-color: #175fc3;
+}
+
+/* Painel branco (conteúdo à esquerda) */
+.right-panel {
+  flex: 1;
+  z-index: 2;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.right-panel .logo {
+  width: 200px;
+  margin-bottom: 30px;
+}
+
+.right-panel h4 {
+  font-size: 18px;
+  color: #175fc3;
+  margin-bottom: 10px;
+}
+
+.right-panel p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* Painel com formulário (acima da diagonal) */
+.left-panel {
+  flex: 1;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* Painel da direita com fundo azul e recorte diagonal */
+.left-panel.diagonal-bg {
+  flex: 1;
+  position: relative;
+  background-color: #175fc3;
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+}
+
+form {
+  width: 100%;
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  color: #fff;
+  margin-bottom: 4px;
+  font-size: 16px;
+}
+
+form p {
+  color: #fff;
+  margin-top: 4px;
+  font-size: 16px;
+}
+
+form h3 {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 35px;
+}
+
+form input[type="email"],
+form input[type="password"] {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #e0e0e0;
+  margin-bottom: 20px;
+}
+
+.options a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:link {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgba(37, 214, 245, 0.321);
+  font-weight: bold;
+} 
+
+form button {
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: rgba(37, 214, 245, 0.321);
+}
+
+.toast {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 1em 1.5em;
+  border-radius: 5px;
+  color: white;
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.toast.show {
+  display: block;
+  opacity: 1;
+}
