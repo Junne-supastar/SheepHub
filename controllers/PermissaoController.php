@@ -3,9 +3,10 @@
     function validarNivel($nivelRequerido) {
         if (session_status() === PHP_SESSION_NONE) session_start();
 
-        if (!isset($_SESSION['nivel_acesso']) || $_SESSION['nivel_acesso'] > $nivelRequerido) {
+        if (!isset($_SESSION['nivel']) || $_SESSION['nivel'] > $nivelRequerido) {
             http_response_code(403);
             echo "Acesso negado.";
             exit();
         }
-    }
+}
+?>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Entrou com: membro@teste.com
 Login FALHOU para membro@teste.com
 Entrou com: membro@teste.com
@@ -187,3 +188,5 @@ Senha recebida: q1w2e3r4
 Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$9uXHBqAJGcOwUOMrXHLSBOkjyJRtuznh\/4lG4F7KM.\/VqtIXkqCyS","nivel":4,"atividade":1}
 Hash verificado OK
 Login OK para juliaramosrodrigues0801@gmail.com
+=======
+>>>>>>> c51b8f8 (Atualização: ajustes no cadastro de usuário e localidade)

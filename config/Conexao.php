@@ -1,4 +1,5 @@
-    <?php
+ <?php
+if (!class_exists('Conexao')) {
     class Conexao {
         private static $instancia;
 
@@ -14,4 +15,4 @@
             return self::$instancia;
         }
     }
-    ?>
+}
