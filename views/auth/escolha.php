@@ -1,6 +1,6 @@
 <?php
 require __DIR__ . '/../../config/Conexao.php';
-$niveis = require __DIR__ . '/../../config/niveis_usu.php';
+$nivel = require __DIR__ . '/../../config/niveis_usu.php';
 
 ?>
 <!DOCTYPE html>

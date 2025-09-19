@@ -1,55 +1,7 @@
 <?php
 session_start();
-
-// Pega os dados temporários do usuário
-$usuario_temp = $_SESSION['usuario_temp'] ?? null;
-$nivel = $_SESSION['nivel_temp'] ?? null;
-
-if (!$usuario_temp || !$nivel) {
-    $_SESSION['errors'] = ['Sessão expirada. Refaça o cadastro.'];
-    header('Location: cadastro.php');
-    exit;
-}
-
 $errors = $_SESSION['errors'] ?? [];
 unset($_SESSION['errors']);
-
-// Quando o formulário é enviado
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    require_once __DIR__ . '/../../controllers/LocalidadeController.php';
-    require_once __DIR__ . '/../../controllers/UsuarioController.php';
-    require_once __DIR__ . '/../../controllers/UsuarioInstituicaoController.php';
-
-    // Salva a localidade
-    $localidadeCtrl = new LocalidadeController();
-    $resLocalidade = $localidadeCtrl->salvar($_POST);
-
-    if (!$resLocalidade['success']) {
-        $_SESSION['errors'] = $resLocalidade['errors'] ?? ['Erro ao salvar localidade'];
-        header('Location: cadastro_localidade.php');
-        exit;
-    }
-
-    // Adiciona o CEP nos dados do usuário
-    $usuario_temp['cep'] = $resLocalidade['id'];
-
-    // Salva o usuário
-    $controller = ($nivel == 2) ? new UsuarioInstituicaoController() : new UsuarioController();
-    $resUsuario = $controller->salvar($usuario_temp);
-
-    // Limpa sessão temporária
-    unset($_SESSION['usuario_temp'], $_SESSION['nivel_temp']);
-
-    if (!empty($resUsuario['success']) && $resUsuario['success']) {
-        $redirect = ($nivel == 2) ? 'dashboard.php' : 'feed.php';
-        header("Location: $redirect");
-        exit;
-    } else {
-        $_SESSION['errors'] = $resUsuario['errors'] ?? ['Erro ao salvar usuário'];
-        header('Location: cadastro_localidade.php');
-        exit;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -75,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="cadastrar">
         <h2>Quase lá! Informe sua localidade</h2>
 
-        <form method="POST">
+        <form method="POST" action="\SheepHub/public/actions/SalvarLocalidade.php">
             <input type="text" name="cep" id="cep" maxlength="8" placeholder="CEP" required>
             <input type="text" name="rua" id="rua" placeholder="Rua" required>
             <input type="text" name="bairro" id="bairro" placeholder="Bairro" required>

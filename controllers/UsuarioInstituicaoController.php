@@ -1,72 +1,143 @@
 <?php
-if (session_status() === PHP_SESSION_NONE) session_start();
-require_once __DIR__ . '/../models/usuarioinstituicao.php';
+require_once __DIR__ . '/../config/Conexao.php';
+require_once __DIR__ . '/../models/UsuarioInstituicao.php';
 
-class UsuarioInstituicaoController {
+class UsuarioInstituicao {
+    private $conn;
 
-    private $modelUser;
-
-  
     public function __construct() {
-        $this->modelUser = new UsuarioInstituicao();
+        $this->conn = Conexao::getConexao();
     }
 
-    // Listar instituições
-    public function index($inicio = null, $quantidade = null) {
-        return $this->modelUser->listar($inicio, $quantidade);
-    }
+    // Valida os dados antes de salvar ou atualizar
+    private function validarCampos($dados, $isUpdate = false) {
+        $erros = [];
 
-    // Buscar instituição por ID (para editar)
-    public function editar($idusuarioinstituicao) {
-        return $this->modelUser->buscarPorId($idusuarioinstituicao);
+        if (isset($dados['username_instituicao']) && strlen($dados['username_instituicao']) < 3) {
+            $erros[] = "Usuário deve ter pelo menos 3 caracteres.";
+        }
+
+        if (isset($dados['email_instituicao']) && !filter_var($dados['email_instituicao'], FILTER_VALIDATE_EMAIL)) {
+            $erros[] = "E-mail inválido.";
+        }
+
+        if (!$isUpdate && isset($dados['senha_instituicao']) && strlen($dados['senha_instituicao']) < 6) {
+            $erros[] = "Senha deve ter pelo menos 6 caracteres.";
+        }
+
+        if (isset($dados['cnpj']) && !preg_match('/^[0-9]{14}$/', $dados['cnpj'])) {
+            $erros[] = "CNPJ inválido (use apenas números, 14 dígitos).";
+        }
+
+        return $erros;
     }
 
     // Salvar nova instituição
     public function salvar($dados) {
-        $resultado = $this->modelUser->salvar($dados);
-        if ($resultado['success']) {
-            $_SESSION['sucesso'] = 'Instituição salva com sucesso.';
-            echo "tudo certo";
-        } else {
-            $_SESSION['errors'] = $resultado['errors'];
-            header('Location: views/auth/cadastro.php');
-            exit;
+        $erros = $this->validarCampos($dados);
+        if (!empty($erros)) return ['success' => false, 'errors' => $erros];
+
+        try {
+            $hash = password_hash($dados['senha_instituicao'], PASSWORD_DEFAULT);
+
+            $sql = "INSERT INTO usuario_instituicao
+                    (nivel, id_status, cnpj, email_instituicao, senha_instituicao, telefone_instituicao, descricao, username_instituicao, dt_criacao_instituicao)
+                    VALUES
+                    (:nivel, 1, :cnpj, :email_instituicao, :senha_instituicao, :telefone_instituicao, :descricao, :username_instituicao, :dt_criacao_instituicao)";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([
+                'nivel'                 => $dados['nivel'],
+                'cnpj'                  => $dados['cnpj'],
+                'email_instituicao'     => $dados['email_instituicao'],
+                'senha_instituicao'     => $hash,
+                'telefone_instituicao'  => $dados['telefone_instituicao'] ?? null,
+                'descricao'             => $dados['descricao'] ?? null,
+                'username_instituicao'  => $dados['username_instituicao'] ?? null,
+                'dt_criacao_instituicao'=> $dados['dt_criacao_instituicao'] ?? date('Y-m-d')
+            ]);
+
+            return ['success' => true, 'id' => $this->conn->lastInsertId()];
+
+        } catch (PDOException $e) {
+            return ['success' => false, 'errors' => ["Erro ao salvar instituição: " . $e->getMessage()]];
         }
     }
 
     // Atualizar instituição existente
-    public function atualizar($idusuarioinstituicao, $dados) {
-        $resultado = $this->modelUser->atualizar($idusuarioinstituicao, $dados);
-        if ($resultado['success']) {
-            $_SESSION['sucesso'] = 'Instituição atualizada com sucesso.';
-        } else {
-            $_SESSION['errors'] = $resultado['errors'];
+    public function atualizar($idusuario_instituicao, $dados) {
+        $erros = $this->validarCampos($dados, true);
+        if (!empty($erros)) return ['success' => false, 'errors' => $erros];
+
+        try {
+            $sql = "UPDATE usuario_instituicao SET
+                        nivel = :nivel,
+                        cnpj = :cnpj,
+                        email_instituicao = :email_instituicao,
+                        telefone_instituicao = :telefone_instituicao,
+                        descricao = :descricao,
+                        username_instituicao = :username_instituicao";
+
+            $params = [
+                'nivel'                => $dados['nivel'],
+                'cnpj'                 => $dados['cnpj'],
+                'email_instituicao'    => $dados['email_instituicao'],
+                'telefone_instituicao' => $dados['telefone_instituicao'] ?? null,
+                'descricao'            => $dados['descricao'] ?? null,
+                'username_instituicao' => $dados['username_instituicao'] ?? null,
+                'idusuario_instituicao'=> $idusuario_instituicao
+            ];
+
+            if (!empty($dados['senha_instituicao'])) {
+                $sql .= ", senha_instituicao = :senha_instituicao";
+                $params['senha_instituicao'] = password_hash($dados['senha_instituicao'], PASSWORD_DEFAULT);
+            }
+
+            $sql .= " WHERE idusuario_instituicao = :idusuario_instituicao";
+
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute($params);
+
+            return ['success' => true];
+
+        } catch (PDOException $e) {
+            return ['success' => false, 'errors' => ["Erro ao atualizar instituição: " . $e->getMessage()]];
         }
-        header('Location: index.php?page=dashboard');
-        exit;
     }
 
-    // Deletar instituição
-    public function deletar($idusuarioinstituicao) {
-        $resultado = $this->modelUser->deletar($idusuarioinstituicao);
-        if ($resultado['success']) {
-            $_SESSION['sucesso'] = 'Instituição deletada com sucesso.';
-      
-
-        } else {
-            $_SESSION['errors'] = $resultado['errors'];
+    // Soft delete ou mudança de status
+    public function atualizarStatus($idusuario_instituicao, $status) {
+        try {
+            $stmt = $this->conn->prepare("UPDATE usuario_instituicao SET id_status = :status WHERE idusuario_instituicao = :idusuario_instituicao");
+            $stmt->execute([
+                'status' => $status,
+                'idusuario_instituicao' => $idusuario_instituicao
+            ]);
+            return ['success' => true];
+        } catch (PDOException $e) {
+            return ['success' => false, 'errors' => ["Erro ao atualizar status: " . $e->getMessage()]];
         }
-        header('Location: index.php?page=dashboard');
-        exit;
     }
 
-    // Bloquear instituição
-    public function bloquear($idusuario_instituicao) {
-        return $this->modelUser->bloquear($idusuario_instituicao);
+    // Listar todas as instituições
+    public function listar($inicio = null, $quantidade = null) {
+        $sql = "SELECT * FROM usuario_instituicao";
+        if ($inicio !== null && $quantidade !== null) {
+            $sql .= " LIMIT :inicio, :quantidade";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindValue(':inicio', (int)$inicio, PDO::PARAM_INT);
+            $stmt->bindValue(':quantidade', (int)$quantidade, PDO::PARAM_INT);
+        } else {
+            $stmt = $this->conn->prepare($sql);
+        }
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Ativar instituição
-    public function ativar($idusuario_instituicao) {
-        return $this->modelUser->ativar($idusuario_instituicao);
+    // Buscar instituição por ID
+    public function buscarPorId($idusuario_instituicao) {
+        $stmt = $this->conn->prepare("SELECT * FROM usuario_instituicao WHERE idusuario_instituicao = :id");
+        $stmt->execute(['id' => $idusuario_instituicao]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }

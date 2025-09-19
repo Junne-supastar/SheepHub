@@ -98,7 +98,7 @@ class UsuarioInstituicao {
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 'nivel' => $dados['nivel'],
-                'id_status' => $dados['id_status'] ?? 1,
+                'id_status' => 1,
                 'username_instituicao' => $dados['username_instituicao'],
                 'email_instituicao' => $dados['email_instituicao'],
                 'senha_instituicao' => $hash,
@@ -135,7 +135,7 @@ class UsuarioInstituicao {
                 'email_instituicao' => $dados['email_instituicao'],
                 'cnpj' => $dados['cnpj'],
                 'telefone_instituicao' => $dados['telefone_instituicao'] ?? null,
-                'id_status' => $dados['id_status'] ?? 1,
+                'id_status' => 1,
                 'id' => $id
             ];
 
