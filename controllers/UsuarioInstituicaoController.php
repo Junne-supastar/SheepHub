@@ -150,7 +150,6 @@ class UsuarioInstituicaoController {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     // Buscar instituição por ID
     public function buscarPorId($idusuario_instituicao) {
         $stmt = $this->conn->prepare("SELECT * FROM usuario_instituicao WHERE idusuario_instituicao = :id");
