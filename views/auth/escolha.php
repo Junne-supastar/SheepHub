@@ -8,7 +8,7 @@ $nivel = require __DIR__ . '/../../config/niveis_usu.php';
 <head>
     <meta charset="UTF-8">
     <title>Escolha de Cadastro</title>
-    <link rel="stylesheet" href="assets/css/style1.css">
+    <link rel="stylesheet" href="../assets/css/style1.css">
 </head>
 <body>
     <main>
@@ -24,9 +24,9 @@ $nivel = require __DIR__ . '/../../config/niveis_usu.php';
             </div>
             <div id="inf">
                 <form action="cadastro.php" method="get">
-                    <button class="tipo" type="submit" name="nivel" value="<?= $niveis['membro'] ?>">Membro</button>
-                    <button class="tipo" type="submit" name="nivel" value="<?= $niveis['visitante'] ?>">Visitante</button>
-                    <button class="tipo" type="submit" name="nivel" value="<?= $niveis['instituição'] ?>">Instituição</button>
+                    <button class="tipo" type="submit" name="nivel" value="<?= $nivel['membro'] ?>">Membro</button>
+                    <button class="tipo" type="submit" name="nivel" value="<?= $nivel['visitante'] ?>">Visitante</button>
+                    <button class="tipo" type="submit" name="nivel" value="<?= $nivel['instituição'] ?>">Instituição</button>
                 </form>
                 <p>Já possui uma conta? <a id="login" href="login.php">Faça login</a></p>
             </div>

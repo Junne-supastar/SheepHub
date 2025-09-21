@@ -57,10 +57,11 @@ CREATE TABLE usuario (
     nivel INT NOT NULL,
     id_status INT NOT NULL,
 	username varchar(40) unique not null,
+    nome varchar(20) not null,
     email VARCHAR(80) UNIQUE NOT NULL,
     senha VARCHAR(255) NOT NULL,
     telefone CHAR(11),
-	dt_criacao date,
+	dt_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     data_nascimento date,
     PRIMARY KEY (idusuario),
     CONSTRAINT fk_usuario_nivel FOREIGN KEY (nivel) REFERENCES niveis_usuario(id_nivelusu),
@@ -76,12 +77,21 @@ CREATE TABLE usuario_instituicao (
     senha_instituicao VARCHAR(255) NOT NULL,
     telefone_instituicao CHAR(11),
     descricao longtext,
-    username_instituicao VARCHAR(80) UNIQUE,
+    nome_instituicao VARCHAR(80),
     dt_criacao_instituicao DATE,
     PRIMARY KEY (idusuario_instituicao),
     CONSTRAINT fk_usuario_inst_nivel FOREIGN KEY (nivel) REFERENCES niveis_usuario(id_nivelusu),
-    CONSTRAINT fk_usuario_inst_status FOREIGN KEY (id_status) REFERENCES statuss(id_status)
+    CONSTRAINT fk_usuario_inst_status FOREIGN KEY (id_status) REFERENCES status(id_status)
 ) ENGINE=InnoDB;
+
+INSERT INTO usuario_instituicao 
+(nivel, id_status, cnpj, email_instituicao, senha_instituicao, telefone_instituicao, descricao, nome_instituicao, dt_criacao_instituicao)
+VALUES
+(2, 1, '12.345.678/0001-01', 'contato@igrejaa.com', '$2y$10$RZHwcptxGan1I0TF5Gcm7OItAbQXrrxb4z.lynnBzrLHq8/04rZ/.', '21999998888', 'Igreja voltada à comunidade local.', 'Igreja A', '2025-01-10'),
+(2, 1, '23.456.789/0001-02', 'contato@igrejab.com', '$2y$10$RZHwcptxGan1I0TF5Gcm7OItAbQXrrxb4z.lynnBzrLHq8/04rZ/.', '21988887777', 'Igreja de jovens e atividades culturais.', 'Igreja B', '2025-02-15'),
+(2, 1, '34.567.890/0001-03', 'contato@igrejac.com', '$2y$10$RZHwcptxGan1I0TF5Gcm7OItAbQXrrxb4z.lynnBzrLHq8/04rZ/.', '21977776666', 'Igreja com foco em caridade e voluntariado.', 'Igreja C', '2025-03-20'),
+(2, 1, '45.678.901/0001-04', 'contato@igrejad.com', '$2y$10$RZHwcptxGan1I0TF5Gcm7OItAbQXrrxb4z.lynnBzrLHq8/04rZ/.', '21966665555', 'Igreja com atividades educativas e sociais.', 'Igreja D', '2025-04-25'),
+(2, 1, '56.789.012/0001-05', 'contato@igrejaf.com', '$2y$10$RZHwcptxGan1I0TF5Gcm7OItAbQXrrxb4z.lynnBzrLHq8/04rZ/.', '21955554444', 'Igreja com foco em música e eventos culturais.', 'Igreja F', '2025-05-30');
 
 -- =====================
 -- 5. PERFIL
@@ -130,14 +140,15 @@ CREATE TABLE departamento (
 -- =====================
 -- 8. PERMISSAO
 -- =====================
+
 CREATE TABLE permissao (
     id_permissao INT NOT NULL AUTO_INCREMENT,
-    idigreja INT NOT NULL,
+    idusuario_instituicao INT NOT NULL,
     idusuario INT NOT NULL,
     data_permissao DATETIME,
     id_status INT NOT NULL,
     PRIMARY KEY (id_permissao),
-    CONSTRAINT fk_permissao_igreja FOREIGN KEY (idigreja) REFERENCES igreja(idigreja) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_permissao_instituicao FOREIGN KEY (idusuario_instituicao) REFERENCES usuario_instituicao(idusuario_instituicao) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_permissao_usuario FOREIGN KEY (idusuario) REFERENCES usuario(idusuario) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT fk_permissao_status FOREIGN KEY (id_status) REFERENCES status(id_status) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB;

@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . '/../config/Conexao.php';
 
 class Usuario {
@@ -76,21 +77,22 @@ class Usuario {
 
         try {
             $hash = !empty($dados['senha']) ? password_hash($dados['senha'], PASSWORD_DEFAULT) : null;
-            $sql = "INSERT INTO usuario (nivel, id_status, email, senha, telefone, username, data_nascimento, dt_criacao, cep)
-                    VALUES (:nivel, :id_status, :email, :senha, :telefone, :username, :data_nascimento, :dt_criacao, :cep)";
+            $sql = "INSERT INTO usuario (nivel, id_status, email, senha, nome, telefone, username, data_nascimento, dt_criacao, cep)
+                    VALUES (:nivel, :id_status, :email, :senha, :nome,:telefone, :username, :data_nascimento, :dt_criacao, :cep)";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 'nivel' => $dados['nivel'],
                 'id_status' =>  1,
                 'email' => $dados['email'],
                 'senha' => $hash,
+                'nome' => $dados['nome'],
                 'telefone' => $dados['telefone'] ?? null,
                 'username' => $dados['username'] ?? null,
                 'data_nascimento' => $dados['data_nascimento'] ?? null,
-                'dt_criacao' => $dados['dt_criacao'] ?? date('Y-m-d'),
+                'dt_criacao' => $dados['dt_criacao'] ?? null,
                 'cep' => $dados['cep'] ?? null
             ]);
-            return ['success' => true, 'id' => $this->conn->lastInsertId()];
+            return ['success' => true, 'idusuario' => $this->conn->lastInsertId()];
         } catch (PDOException $e) {
             return ['success' => false, 'errors' => ["Erro ao salvar usuário: " . $e->getMessage()]];
         }
@@ -104,10 +106,11 @@ class Usuario {
         if (!empty($dados['email']) && $this->existeEmail($dados['email'], $idusuario)) return ['success' => false, 'errors' => ["E-mail já cadastrado!"]];
 
         try {
-            $sql = "UPDATE usuario SET nivel = :nivel, email = :email, telefone = :telefone, username = :username, data_nascimento = :data_nascimento";
+            $sql = "UPDATE usuario SET nivel = :nivel, email = :email, nome = :nome, telefone = :telefone, username = :username, data_nascimento = :data_nascimento";
             $params = [
                 'nivel' => $dados['nivel'],
                 'email' => $dados['email'],
+                'nome' => $dados['nome'],
                 'telefone' => $dados['telefone'] ?? null,
                 'username' => $dados['username'] ?? null,
                 'data_nascimento' => $dados['data_nascimento'] ?? null,

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmação de Cadastro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="css/confirmar-cadastro.css">
+    <link rel="stylesheet" href="../assets/css/confirmar-cadastro.css">
 </head>
 <body>
     <div class="confirmation-container">
-        <div class="img-confirmation"><img src="img/nuvem.png" alt="Nuvem"></div>
+        <div class="img-confirmation"><img src="../assets/img/nuvem.png" alt="Nuvem"></div>
         <h1 class="confirmation-title">Bem vindo!</h1>
         <p class="confirmation-message">
             Agora você faz parte do SheepHub.

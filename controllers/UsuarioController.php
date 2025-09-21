@@ -1,8 +1,10 @@
 <?php
+
 require_once __DIR__ . '/../config/Conexao.php';
 require_once __DIR__ . '/../models/Usuario.php';
 
-class Usuario {
+
+class UsuarioController {
     private $conn;
 
     public function __construct() {
@@ -37,14 +39,15 @@ class Usuario {
             $hash = password_hash($dados['senha'], PASSWORD_DEFAULT);
 
             $sql = "INSERT INTO usuario
-                    (nivel, id_status, username, email, senha, telefone, dt_criacao, data_nascimento)
+                    (nivel, id_status, username, nome, email, senha, telefone, dt_criacao, data_nascimento)
                     VALUES
-                    (:nivel, 1, :username, :email, :senha, :telefone, :dt_criacao, :data_nascimento)";
+                    (:nivel, 1, :username,:nome,:email, :senha, :telefone, :dt_criacao, :data_nascimento)";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 'nivel'           => $dados['nivel'],
                 'username'        => $dados['username'],
+                'nome'            => $dados['nome'],
                 'email'           => $dados['email'],
                 'senha'           => $hash,
                 'telefone'        => $dados['telefone'] ?? null,
@@ -68,6 +71,7 @@ class Usuario {
             $sql = "UPDATE usuario SET
                         nivel = :nivel,
                         username = :username,
+                        nome = :nome,
                         email = :email,
                         telefone = :telefone,
                         data_nascimento = :data_nascimento";
@@ -75,6 +79,7 @@ class Usuario {
             $params = [
                 'nivel'           => $dados['nivel'],
                 'username'        => $dados['username'],
+                'nome'            => $dados['nome'],
                 'email'           => $dados['email'],
                 'telefone'        => $dados['telefone'] ?? null,
                 'data_nascimento' => $dados['data_nascimento'] ?? null,

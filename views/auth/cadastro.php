@@ -10,7 +10,7 @@ unset($_SESSION['errors']);
 <head>
 <meta charset="UTF-8">
 <title>Cadastro</title>
-<link rel="stylesheet" href="assets/css/style1.css">
+<link rel="stylesheet" href="../assets/css/style1.css">
 </head>
 <body>
 
@@ -30,11 +30,11 @@ unset($_SESSION['errors']);
         <h2>Cadastre-se agora</h2>
 
         <!-- Aqui enviamos para o controller -->
-        <form method="POST" action="/../../public/action/processar_cadastro.php">
+    <form method="POST" action="\SheepHub/public/actions/processar_cadastro.php">
             <input type="hidden" name="nivel" value="<?= htmlspecialchars($nivel) ?>">
 
             <?php if ($nivel == 2): ?>
-                <input class="inserir" type="text" name="username_instituicao" placeholder="Username da instituição" required>
+                <input class="inserir" type="text" name="nome_instituicao" placeholder="Nome da instituição" required>
                 <input class="inserir" type="text" name="cnpj" placeholder="CNPJ" required>
                 <input class="inserir" type="email" name="email_instituicao" placeholder="E-mail" required>
                 <input class="inserir" type="password" name="senha_instituicao" placeholder="Senha" required>
@@ -42,7 +42,7 @@ unset($_SESSION['errors']);
                 <input class="inserir" type="textarea" name="descricao" placeholder="Descrição (Opcional)">
             <?php else: ?>
                 <input class="inserir" type="text" name="username" placeholder="Usuário" required>
-                <input class="inserir" type="text" name="nome" placeholder="Primeiro nome" required>
+                <input class="inserir" type="text" name="nome" placeholder="Nome" required>
                 <input class="inserir" type="date" name="data_nascimento" max="<?= date('Y-m-d') ?>" required>
                 <input class="inserir" type="email" name="email" placeholder="E-mail" required>
                 <input class="inserir" type="password" name="senha" placeholder="Senha" required>
@@ -52,5 +52,15 @@ unset($_SESSION['errors']);
         </form>
     </div>
 </main>
+<script>
+// document.querySelectorAll('input').forEach(function(input) {
+//     input.addEventListener('keydown', function(e) {
+//         if (e.key === 'Enter') {
+//             e.preventDefault();
+//             window.location.href = '../feed2.html';
+//         }
+//     });
+// });
+</script>
 </body>
 </html>

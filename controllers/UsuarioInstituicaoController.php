@@ -1,8 +1,10 @@
 <?php
+
 require_once __DIR__ . '/../config/Conexao.php';
 require_once __DIR__ . '/../models/UsuarioInstituicao.php';
 
-class UsuarioInstituicao {
+
+class UsuarioInstituicaoController {
     private $conn;
 
     public function __construct() {
@@ -13,7 +15,7 @@ class UsuarioInstituicao {
     private function validarCampos($dados, $isUpdate = false) {
         $erros = [];
 
-        if (isset($dados['username_instituicao']) && strlen($dados['username_instituicao']) < 3) {
+        if (isset($dados['nome_instituicao']) && strlen($dados['nome_instituicao']) < 3) {
             $erros[] = "Usuário deve ter pelo menos 3 caracteres.";
         }
 
@@ -41,19 +43,20 @@ class UsuarioInstituicao {
             $hash = password_hash($dados['senha_instituicao'], PASSWORD_DEFAULT);
 
             $sql = "INSERT INTO usuario_instituicao
-                    (nivel, id_status, cnpj, email_instituicao, senha_instituicao, telefone_instituicao, descricao, username_instituicao, dt_criacao_instituicao)
+                    (nivel, id_status, cnpj, email_instituicao, senha_instituicao, telefone_instituicao, descricao, nome_instituicao, dt_criacao_instituicao)
                     VALUES
-                    (:nivel, 1, :cnpj, :email_instituicao, :senha_instituicao, :telefone_instituicao, :descricao, :username_instituicao, :dt_criacao_instituicao)";
+                    (:nivel, :id_status, :cnpj, :email_instituicao, :senha_instituicao, :telefone_instituicao, :descricao, :nome_instituicao, :dt_criacao_instituicao)";
 
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([
                 'nivel'                 => $dados['nivel'],
+                'id_status'             => 1,
                 'cnpj'                  => $dados['cnpj'],
                 'email_instituicao'     => $dados['email_instituicao'],
                 'senha_instituicao'     => $hash,
                 'telefone_instituicao'  => $dados['telefone_instituicao'] ?? null,
                 'descricao'             => $dados['descricao'] ?? null,
-                'username_instituicao'  => $dados['username_instituicao'] ?? null,
+                'nome_instituicao'      => $dados['nome_instituicao'] ?? null,
                 'dt_criacao_instituicao'=> $dados['dt_criacao_instituicao'] ?? date('Y-m-d')
             ]);
 
@@ -76,7 +79,7 @@ class UsuarioInstituicao {
                         email_instituicao = :email_instituicao,
                         telefone_instituicao = :telefone_instituicao,
                         descricao = :descricao,
-                        username_instituicao = :username_instituicao";
+                        nome_instituicao = :nome_instituicao";
 
             $params = [
                 'nivel'                => $dados['nivel'],
@@ -84,7 +87,7 @@ class UsuarioInstituicao {
                 'email_instituicao'    => $dados['email_instituicao'],
                 'telefone_instituicao' => $dados['telefone_instituicao'] ?? null,
                 'descricao'            => $dados['descricao'] ?? null,
-                'username_instituicao' => $dados['username_instituicao'] ?? null,
+                'nome_instituicao'     => $dados['nome_instituicao'] ?? null,
                 'idusuario_instituicao'=> $idusuario_instituicao
             ];
 
@@ -118,6 +121,19 @@ class UsuarioInstituicao {
             return ['success' => false, 'errors' => ["Erro ao atualizar status: " . $e->getMessage()]];
         }
     }
+    public function ativar($idusuario_instituicao) {
+        return $this->atualizarStatus($idusuario_instituicao, 1);
+    }
+
+    // Bloquear usuário (id_status = 3)
+    public function bloquear($idusuario_instituicao) {
+        return $this->atualizarStatus($idusuario_instituicao, 2);
+    }
+
+    // Soft delete / desativar usuário (id_status = 4)
+    public function deletar($idusuario_instituicao) {
+        return $this->atualizarStatus($idusuario_instituicao, 4);
+    }
 
     // Listar todas as instituições
     public function listar($inicio = null, $quantidade = null) {
@@ -133,6 +149,7 @@ class UsuarioInstituicao {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
 
     // Buscar instituição por ID
     public function buscarPorId($idusuario_instituicao) {
