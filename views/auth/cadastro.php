@@ -35,10 +35,10 @@ unset($_SESSION['errors']);
 
             <?php if ($nivel == 2): ?>
                 <input class="inserir" type="text" name="nome_instituicao" placeholder="Nome da instituição" required>
-                <input class="inserir" type="text" name="cnpj" placeholder="CNPJ" required>
+                <input class="inserir" type="text" name="cnpj" id="cnpj" placeholder="CNPJ" required>
                 <input class="inserir" type="email" name="email_instituicao" placeholder="E-mail" required>
                 <input class="inserir" type="password" name="senha_instituicao" placeholder="Senha" required>
-                <input class="inserir" type="text" name="telefone_instituicao" placeholder="Telefone" required>
+                <input class="inserir" type="text" name="telefone_instituicao" id="telefone_instituicao" placeholder="Telefone" required>
                 <input class="inserir" type="textarea" name="descricao" placeholder="Descrição (Opcional)">
             <?php else: ?>
                 <input class="inserir" type="text" name="username" placeholder="Usuário" required>
@@ -48,19 +48,46 @@ unset($_SESSION['errors']);
                 <input class="inserir" type="password" name="senha" placeholder="Senha" required>
             <?php endif; ?>
 
+        
+    
+
+
             <button type="submit" class="enviar">Enviar</button>
         </form>
     </div>
 </main>
 <script>
-// document.querySelectorAll('input').forEach(function(input) {
-//     input.addEventListener('keydown', function(e) {
-//         if (e.key === 'Enter') {
-//             e.preventDefault();
-//             window.location.href = '../feed2.html';
-//         }
-//     });
-// });
+function mascaraCNPJ(valor) {
+    return valor
+        .replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1.$2')
+        .replace(/(\d{3})(\d)/, '$1/$2')
+        .replace(/(\d{4})(\d{1,2})$/, '$1-$2');
+}
+
+function mascaraTelefone(valor) {
+    return valor
+        .replace(/\D/g, '')
+        .replace(/^(\d{2})(\d)/g, '($1) $2')
+        .replace(/(\d{5})(\d{1,4})$/, '$1-$2');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    var cnpj = document.getElementById('cnpj');
+    if (cnpj) {
+        cnpj.addEventListener('input', function() {
+            this.value = mascaraCNPJ(this.value);
+        });
+    }
+
+    var telefone = document.getElementById('telefone_instituicao');
+    if (telefone) {
+        telefone.addEventListener('input', function() {
+            this.value = mascaraTelefone(this.value);
+        });
+    }
+});
 </script>
 </body>
 </html>
