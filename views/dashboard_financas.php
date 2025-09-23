@@ -15,25 +15,7 @@
 <body>
 
     <div class="container-principal">
-        <aside id="menu-lateral" class="menu-lateral">
-            <a href="#" class="logo">
-                
-                <span>SheepHub</span>
-            </a>
-            <nav>
-                <a href="#" class="link-navegacao"><span>Feed</span></a>
-                <a href="#" class="link-navegacao"><span>Mensagens</span></a>
-                <a href="#" class="link-navegacao"><span>Eventos</span></a>
-                <a href="#" class="link-navegacao"><span>Igrejas</span></a>
-                <a href="#" class="link-navegacao"><span>Meu perfil</span></a>
-                <a href="#" class="link-navegacao ativo"><span>Dashboard</span></a>
-                <button class="botao-postar">Postar</button>
-            </nav>
-            <div>
-                <a href="#" class="link-navegacao"><span>Configurações</span></a>
-                <a href="#" class="link-navegacao"><span>Sair</span></a>
-            </div>
-        </aside>
+   <?php include __DIR__ . '/includes/sidebar.php'; ?>
 
         <div id="fundo-overlay" class="hidden"></div>
 
