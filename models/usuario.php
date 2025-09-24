@@ -10,7 +10,10 @@ class Usuario {
     }
 
     public function listar($inicio = null, $quantidade = null) {
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT u.*, s.nome AS nome_status
+            FROM usuario u
+            JOIN status s ON u.id_status = s.id_status";
+            
         if ($inicio !== null && $quantidade !== null) {
             $sql .= " LIMIT :inicio, :quantidade";
             $stmt = $this->conn->prepare($sql);
@@ -68,35 +71,39 @@ class Usuario {
         return $stmt->fetchColumn() > 0;
     }
 
-    public function salvar($dados) {
-        $erros = $this->validarCampos($dados);
-        if (!empty($erros)) return ['success' => false, 'errors' => $erros];
+   public function salvar($dados) {
+    $erros = $this->validarCampos($dados);
+    if (!empty($erros)) return ['success' => false, 'errors' => $erros];
 
-        if (!empty($dados['username']) && $this->existeUsername($dados['username'])) return ['success' => false, 'errors' => ["Usuário já cadastrado!"]];
-        if (!empty($dados['email']) && $this->existeEmail($dados['email'])) return ['success' => false, 'errors' => ["E-mail já cadastrado!"]];
+    // Mantenha as validações de unicidade de username e email.
+    if ($this->existeUsername($dados['username'])) return ['success' => false, 'errors' => ["Usuário já cadastrado!"]];
+    if ($this->existeEmail($dados['email'])) return ['success' => false, 'errors' => ["E-mail já cadastrado!"]];
 
-        try {
-            $hash = !empty($dados['senha']) ? password_hash($dados['senha'], PASSWORD_DEFAULT) : null;
-            $sql = "INSERT INTO usuario (nivel, id_status, email, senha, nome, telefone, username, data_nascimento, dt_criacao, cep)
-                    VALUES (:nivel, :id_status, :email, :senha, :nome,:telefone, :username, :data_nascimento, :dt_criacao, :cep)";
-            $stmt = $this->conn->prepare($sql);
-            $stmt->execute([
-                'nivel' => $dados['nivel'],
-                'id_status' =>  1,
-                'email' => $dados['email'],
-                'senha' => $hash,
-                'nome' => $dados['nome'],
-                'telefone' => $dados['telefone'] ?? null,
-                'username' => $dados['username'] ?? null,
-                'data_nascimento' => $dados['data_nascimento'] ?? null,
-                'dt_criacao' => $dados['dt_criacao'] ?? null,
-                'cep' => $dados['cep'] ?? null
-            ]);
-            return ['success' => true, 'idusuario' => $this->conn->lastInsertId()];
-        } catch (PDOException $e) {
-            return ['success' => false, 'errors' => ["Erro ao salvar usuário: " . $e->getMessage()]];
-        }
+    try {
+        $hash = password_hash($dados['senha'], PASSWORD_DEFAULT);
+        $sql = "INSERT INTO usuario (nivel, id_status, email, senha, nome, username, data_nascimento, dt_criacao)
+        VALUES (:nivel, :id_status, :email, :senha, :nome, :username, :data_nascimento, :dt_criacao)";
+        $stmt = $this->conn->prepare($sql);
+
+        $stmt->execute([
+            'nivel' => $dados['nivel'],
+            'id_status' => 1,
+            'email' => $dados['email'],
+            'senha' => $hash,
+            'nome' => $dados['nome'],
+            'username' => $dados['username'],
+            'data_nascimento' => $dados['data_nascimento'] ?? null,
+            'dt_criacao' => date('Y-m-d H:i:s'),
+        ]);
+        // Retorna o ID do novo usuário após o sucesso
+        return ['success' => true, 'idusuario' => $this->conn->lastInsertId()];
+
+    } catch (PDOException $e) {
+        // Em caso de erro, retorna a mensagem de erro e 'idusuario' como null
+        return ['success' => false, 'errors' => ["Erro ao salvar Usuário: " . $e->getMessage()], 'idusuario' => null];
     }
+}
+    
 
     public function atualizar($idusuario, $dados) {
         $erros = $this->validarCampos($dados, true);
@@ -106,12 +113,11 @@ class Usuario {
         if (!empty($dados['email']) && $this->existeEmail($dados['email'], $idusuario)) return ['success' => false, 'errors' => ["E-mail já cadastrado!"]];
 
         try {
-            $sql = "UPDATE usuario SET nivel = :nivel, email = :email, nome = :nome, telefone = :telefone, username = :username, data_nascimento = :data_nascimento";
+            $sql = "UPDATE usuario SET nivel = :nivel, email = :email, nome = :nome, username = :username, data_nascimento = :data_nascimento";
             $params = [
                 'nivel' => $dados['nivel'],
                 'email' => $dados['email'],
                 'nome' => $dados['nome'],
-                'telefone' => $dados['telefone'] ?? null,
                 'username' => $dados['username'] ?? null,
                 'data_nascimento' => $dados['data_nascimento'] ?? null,
                 'idusuario' => $idusuario
@@ -140,13 +146,14 @@ class Usuario {
     }
 
     public function atualizarStatus($idusuario, $status) {
-        try {
-            $stmt = $this->conn->prepare("UPDATE usuario SET id_status = :status WHERE idusuario = :idusuario");
-            $stmt->execute(['status' => $status, 'idusuario' => $idusuario]);
-            return ['success' => true];
-        } catch (PDOException $e) {
-            return ['success' => false, 'errors' => ["Erro ao atualizar status: " . $e->getMessage()]];
-        }
+        if(!in_array($status, [1, 2])) return ['success' => false, 'errors' => ['Status inválido']];
+         try {
+        $stmt = $this->conn->prepare("UPDATE usuario SET id_status = :status WHERE idusuario = :idusuario");
+        $stmt->execute(['status' => $status, 'idusuario' => $idusuario]);
+        return ['success' => true];
+    } catch(PDOException $e) {
+        return ['success' => false, 'errors' => ["Erro ao atualizar status: ".$e->getMessage()]];
+    }
     }
 
     public function autenticar($email, $senha) {

@@ -10,7 +10,10 @@ class UsuarioInstituicao {
 
     // Listar instituições
     public function listar($inicio = null, $quantidade = null) {
-        $sql = "SELECT * FROM usuario_instituicao";
+         $sql = "SELECT i.*, s.nome AS nome_status
+            FROM usuario_instituicao i
+            JOIN status s ON i.id_status = s.id_status";
+
         if ($inicio !== null && $quantidade !== null) {
             $sql .= " LIMIT :inicio, :quantidade";
             $stmt = $this->conn->prepare($sql);
@@ -164,6 +167,11 @@ class UsuarioInstituicao {
         }
     }
 
+    public function contarTotal() {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) as total FROM usuario_instituicao");
+        $stmt->execute();
+        return (int) $stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
     // Atualizar status (ativar/bloquear)
     public function atualizarStatus($id, $status) {
         try {

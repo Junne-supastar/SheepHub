@@ -19,6 +19,7 @@
 --amarelo: #FCB628;
 --vermelho-erro: #CF624A;
 --azul-notificacao: #5591B2;
+--verde-sucesso: #4BB543;
 --branco: #FFFFFF;
 --cinza-padrao: #ECF2F5;
 --cinza-claro: #D9D9D9;
@@ -411,13 +412,14 @@ main {
 }
 
 
-
+/* crud */
 
 #card-atividade {
     flex-grow: 1; 
     display: flex;
     flex-direction: column;
     align-items: center; 
+    
 }
 
 
@@ -474,9 +476,10 @@ justify-content: space-between;
 
 /* alterações nanda - membros */
 
+
 .tabela-container{
     border: 3px solid blue;
-    max-height:400px;        /* altura visível; ajuste como quiser */
+    max-height:70vh;        /* altura visível; ajuste como quiser */
     overflow-y:auto;         /* só a tabela rola verticalmente */
     overflow-x:auto;         /* rolagem horizontal se precisar */
     border:1px solid #ccc;
@@ -548,6 +551,8 @@ tbody td{
     text-decoration: none;
 }
 
+
+
 .botao-controle:hover{
     background:var(--amarelo-fechado);
     color:white;
@@ -580,10 +585,138 @@ i {
 
 .acoes {
     display:flex;
-    gap:10px;
+    gap:15px;
     justify-content:center;
 }
 
 /* larguras fixas opcionais */
 .col-foto { width:70px; }
-.col-controle { width:90px; }
+.col-controle { width:190px; }
+
+.paginacao {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 15px 0;
+    margin: 20px 0;
+}
+
+.paginacao li {
+    display: inline-block;
+}
+
+.paginacao a {
+    display: block;
+    padding: 8px 14px;
+    border: 2px solid var(--azul-acizentado);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--azul-acizentado);
+    transition: all 0.2s ease;
+}
+
+.paginacao a:hover {
+    background: var(--azul);
+    color: #fff;
+}
+
+.paginacao .ativo a {
+    background: var(--azul-claro);
+    color: #fff;
+    border-color: var(--azul-claro);
+}
+
+.botao {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    margin-right: 5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.status-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-right: 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+/* Status ativo */
+.btn-ativo {
+    background-color: var(--azul);
+    color: white;
+}
+
+.btn-inativo {
+    background-color: #ccc; 
+    color: white;
+}
+
+.status-btn:hover {
+    opacity: 0.8;
+}
+
+
+.botoes-acao {
+    display: flex;
+    flex-direction: row;
+    gap: 5px; /* espaço entre os botões */
+}
+
+/* Container da barra do CRUD */
+.crud-top-bar {
+    display: flex;
+    justify-content: space-between; /* Select à esquerda, botão à direita */
+    align-items: center;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+/* Label do select */
+.tipo-label {
+    margin-right: 10px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Select estilizado */
+#tipo {
+    padding: 6px 10px;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+/* Botão Cadastrar */
+.btn-cadastrar {
+    display: inline-block;
+    padding: 7px 18px;
+    background-color: var(--amarelo-medio); /* Verde */
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.btn-cadastrar:hover {
+    background-color: var(--amarelo-escuro); /* Verde mais escuro ao passar o mouse */
+}
+
+/* Botão de editar */

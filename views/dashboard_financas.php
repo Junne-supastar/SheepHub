@@ -48,7 +48,7 @@
                         <div class="grid-estatisticas">
 
                             <div class="cartao-estatistica">
-                                <div class="icone-cartao"><img src="img/icone-mao-dashboard-financas.svg" alt=""></div>
+                                <div class="icone-cartao"><img src="assets/img/icone-mao-dashboard-financas.svg" alt=""></div>
                                 <div class="desc-card-estatistica">
                                     <p>Renda Total</p>
                                     <p class="valor-cartao">R$5.037</p>
@@ -56,7 +56,7 @@
                             </div> 
 
                             <div class="cartao-estatistica">
-                                <div class="icone-cartao"><img src="img/icone-sacodollar-dashboard-financas.svg" alt=""></div>
+                                <div class="icone-cartao"><img src="assets/img/icone-sacodollar-dashboard-financas.svg" alt=""></div>
                                 <div class="desc-card-estatistica">
                                     <p class="substitulo-valor-cartao
                                     ">Despesas</p>
@@ -65,7 +65,7 @@
                             </div>
 
                              <div class="cartao-estatistica">
-                                <div class="icone-cartao"><img src="img/icone-porco-dashboard-financas.svg" alt=""></div>
+                                <div class="icone-cartao"><img src="assets/img/icone-porco-dashboard-financas.svg" alt=""></div>
                                 <div class="desc-card-estatistica">
                                     <p>Economia</p>
                                     <p class="valor-cartao">R$7.233</p>
@@ -91,7 +91,7 @@
                         <div class="cont-progresso">
                             <div class="progresso-item" id="progresso-item-01">
 
-                                <div class="icone-progresso um"><img src="img/icone-martelo-dashboard-financas.svg" alt=""></div>
+                                <div class="icone-progresso um"><img src="assets/img/icone-martelo-dashboard-financas.svg" alt=""></div>
 
                                 <div class="card-geral-progresso">
                                     <div class="card-progresso" id="card-progresso01">
@@ -105,7 +105,7 @@
 
                             <div class="progresso-item" id="progresso-item-02">
 
-                                <div class="icone-progresso dois"><img src="img/icone-aviao-dashboard-financas.svg" alt=""></div>
+                                <div class="icone-progresso dois"><img src="assets/img/icone-aviao-dashboard-financas.svg" alt=""></div>
 
                                 <div class="card-geral-progresso">
                                     <div class="card-progresso" id="card-progresso02">

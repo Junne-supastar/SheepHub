@@ -58,7 +58,7 @@ try {
     }
 
     // Pega o id do novo usuário criado
-    $newId = $resultado['id'] ?? null; // seu salvar() deve retornar o id do usuário
+    $newId = $resultado['idusuario'] ?? null; // seu salvar() deve retornar o id do usuário
     if (!$newId) {
         $_SESSION['errors'] = ['Erro interno: id do novo usuário não retornado.'];
         header('Location: \Sheephub/views/auth/cadastro.php');
@@ -80,7 +80,7 @@ try {
             'nome' => $_POST['nome'] ?? null,
             'email' => $_POST['email'] ?? null,
             'senha' => $_POST['senha'] ?? null,
-            'data_nascimento' => $_POST['nascimento'] ?? null
+            'data_nascimento' => $_POST['data_nascimento'] ?? null
         ]);
 
         if (!empty($resultado['errors'])) {

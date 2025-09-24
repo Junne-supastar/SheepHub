@@ -14,7 +14,7 @@
         <p class="confirmation-message">
             Agora você faz parte do SheepHub.
         </p>
-        <a href="#" id="loginButton" class="action-button">Começar a navegar</a>
+        <a href="../dashboard_financas.php" id="loginButton" class="action-button">Começar a navegar</a>
     </div>
 
     <script src="js/confirmar-cadastro.js"></script>
