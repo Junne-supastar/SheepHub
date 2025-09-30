@@ -587,3 +587,60 @@ i {
 /* larguras fixas opcionais */
 .col-foto { width:70px; }
 .col-controle { width:90px; }
+
+/* Estilos do cabeçalho do dashboard */
+
+.cabecalho-dashboard {
+    margin-bottom: 2.5rem;
+}
+
+.bem-vindo {
+    color: #1F3440;
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+}
+
+.titulo-dashboard {
+    color: #80CDEB;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+}
+
+.menu-dashboard {
+    display: flex;
+    gap: 3.5rem;
+    margin-top: 0.5rem;
+}
+
+.item-menu {
+    color: #1F3440;
+    font-size: 1.35rem;
+    font-weight: 700;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.item-menu.ativo {
+    color: #1F3440;
+    font-weight: 800;
+}
+
+.item-menu.ativo .barra-aba {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 60%;
+    height: 7px;
+    border-radius: 4px;
+    background: #F0D1A6;
+    content: "";
+}
+
+.barra-aba {
+    display: none;
+}
