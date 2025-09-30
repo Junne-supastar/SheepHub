@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+}
+
+:root {
+    --azul-escuro: #1F3440;
+    --azul-claro: #80CDEB;
+    --azul-fundo: #DBF2FF;
+    --azul: #7BAEC2;
+    --azul-acizentado: #C0CED6;
+    --cinza-salmao: #EEE8DC;
+    --salmao: #F0D1A6;
+    --amarelo-medio: #F2CF87;
+    --amarelo-claro: #FFEBAA;
+    --amarelo-fechado: #ECBE5F;
+    --amarelo-escuro: #AB8E52;
+    --amarelo: #FCB628;
+    --amarelo-hover: #e5941a;
+    --branco: #FFFFFF;
+    --cinza-padrao: #ECF2F5;
+    --cinza-claro: #D9D9D9;
+    --cinza: #9B9B9B;
+    --cinza-escuro: #565656;
+    --preto: #000000;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--azul-fundo);
+    font-family: 'Montserrat', sans-serif;
+}
+
+main {
+    width: 70%;
+    height: 70%;
+    background-color: var(--branco);
+    display: flex;
+    border-radius: 30px;
+}
+
+#ovelha {
+    width: 600px;
+    height: 100%;
+    border-radius: 30px 0px 0px 30px;
+
+    background-image: url('views/assets/img/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.destaqueTexto {
+    color: var(--azul-claro);
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+.cadastrar {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+p {
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    font-family: montserrat;
+    color: var(--branco);
+    font-size: 1rem;
+
+    margin: auto;
+    display: block;
+    width: 230px;
+    height: 50px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.inserir {
+    width: 300px;
+    height: 40px;
+    border: 1px solid var(--cinza);
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+select {
+    font-family: montserrat;
+    color: var(--cinza-escuro);
+}
+
+select:focus {
+    outline: none; 
+    border-color: var(--cinza); 
+}
+
+.enviar {
+    background-color: var(--amarelo);
+    transition: background-color 0.3s ease;
+    margin-top: 10%;
+    width: 100%;
+}
+
+.enviar:hover {
+    background-color: var(--amarelo-hover);
+}
+
+input::placeholder {
+    font-family: montserrat; 
+}
+
+input:focus {
+  outline: none; /* remove a borda preta padrão */
+  border-color: var(--preto); /* muda a cor da borda */
+  box-shadow: 0 0 5px var(--azul-acizentado); /* brilho suave */
+}
+
+#cadastroTexto {
+    text-align: center;
+
+}

@@ -1,0 +1,232 @@
+<<<<<<< HEAD
+Entrou com: membro@teste.com
+Login FALHOU para membro@teste.com
+Entrou com: membro@teste.com
+Login FALHOU para membro@teste.com
+Entrou com: lider@teste.com
+Login FALHOU para lider@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123456
+Login FALHOU para membro@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123456
+Resultado SELECT: {"idusuario":3,"email":"membro@teste.com","senha":"$2y$10$e0NR9OZ6J3v3ZXUQeFxtJ.NYJvjqHs7m.FcGxI8u5ZQLnkkv5c6wS","nivel":4,"atividade":1}
+Hash verificado FALHOU
+Login FALHOU para membro@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":3,"email":"membro@teste.com","senha":"$2y$10$wK8Q8QwQwQwQwQwQwQwQwOeQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw","nivel":4,"atividade":1}
+Hash verificado FALHOU
+Login FALHOU para membro@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":3,"email":"membro@teste.com","senha":"$2y$10$wQ7wQwQwQwQwQwQwQwQwQeQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw","nivel":4,"atividade":1}
+Hash verificado FALHOU
+Login FALHOU para membro@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":3,"email":"membro@teste.com","senha":"$2y$10$wQ7wQwQwQwQwQwQwQwQwQeQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw","nivel":4,"atividade":1}
+Hash verificado FALHOU
+Login FALHOU para membro@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":3,"email":"membro@teste.com","senha":"$2y$10$wQ7wQwQwQwQwQwQwQwQwQeQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQwQw","nivel":4,"atividade":1}
+Hash verificado FALHOU
+Login FALHOU para membro@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":3,"email":"membro@teste.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZG","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para membro@teste.com
+Entrou com: lider@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":2,"email":"lider@teste.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZG","nivel":2,"atividade":1}
+Hash verificado OK
+Login OK para lider@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":3,"email":"membro@teste.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZG","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para membro@teste.com
+Entrou com: admin@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":1,"email":"admin@teste.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZ","nivel":1,"atividade":1}
+Hash verificado FALHOU
+Login FALHOU para admin@teste.com
+Entrou com: admin@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":1,"email":"admin@teste.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZ","nivel":1,"atividade":1}
+Hash verificado FALHOU
+Login FALHOU para admin@teste.com
+Entrou com: admin@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":1,"email":"admin@teste.com","senha":"$2y$10$nwWsItkA0NiqCBh6o2mW6ej8UB5Vwpg9yUYcZR2e7oziLPL7SeYIS","nivel":1,"atividade":1}
+Hash verificado OK
+Login OK para admin@teste.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 123
+Resultado SELECT: false
+Hash verificado FALHOU
+Login FALHOU para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 123
+Resultado SELECT: false
+Hash verificado FALHOU
+Login FALHOU para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 123
+Resultado SELECT: false
+Hash verificado FALHOU
+Login FALHOU para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 123
+Resultado SELECT: false
+Hash verificado FALHOU
+Login FALHOU para juliaramosrodrigues0801@gmail.com
+Entrou com: admin@teste.com
+Senha recebida: 123
+Resultado SELECT: false
+Hash verificado FALHOU
+Login FALHOU para admin@teste.com
+Entrou com: admin@teste.com
+Senha recebida: 123
+Resultado SELECT: false
+Hash verificado FALHOU
+Login FALHOU para admin@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123
+Resultado SELECT: false
+Hash verificado FALHOU
+Login FALHOU para membro@teste.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":4,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZG","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: admin@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":1,"email":"admin@teste.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZG","nivel":1,"atividade":1}
+Hash verificado OK
+Login OK para admin@teste.com
+Entrou com: lider@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":2,"email":"lider@teste.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZG","nivel":2,"atividade":1}
+Hash verificado OK
+Login OK para lider@teste.com
+Entrou com: membro@teste.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":3,"email":"membro@teste.com","senha":"$2y$10$0oVCQtCa4LyiaJTmX\/rFlu45jGOKxQTHe7MamUPDtNhltxFOVjuZG","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para membro@teste.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$NSU8LQ3crbaFSp\/PHD8rJODcc22acnDTTf509.3nwtK8TqXWJEpIa","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 321
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$l7CaKpkUEjwkIcPF28WW7u5gg3zLdZVW7rJxRh3ASe2jdcabiQyHK","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$l7CaKpkUEjwkIcPF28WW7u5gg3zLdZVW7rJxRh3ASe2jdcabiQyHK","nivel":4,"atividade":1}
+Hash verificado FALHOU
+Login FALHOU para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 321
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$l7CaKpkUEjwkIcPF28WW7u5gg3zLdZVW7rJxRh3ASe2jdcabiQyHK","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 12345
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$pGp.iPZyBSqiI26KBNH.me9abYar6BI8.OzAMkwxvz3By9kmwBHlK","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 333
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$R76OfF2ylFrpTrF80qWd1eOmnWqPNjdWTLg0874aYVHDVlqkdRfRm","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 123
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$NSU8LQ3crbaFSp\/PHD8rJODcc22acnDTTf509.3nwtK8TqXWJEpIa","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 111
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$din4fU4Jg5r5IXC7RoSttOua3sIQLhBpXpfYsW7t..soF89g9aqGG","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: 111
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$din4fU4Jg5r5IXC7RoSttOua3sIQLhBpXpfYsW7t..soF89g9aqGG","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: nandarainha
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$urD7tvMfZ9.\/zfoAOJ.tw.w7wy079B6ShgBuIbqM41ycp46mVTZh6","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: nandarainha
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$urD7tvMfZ9.\/zfoAOJ.tw.w7wy079B6ShgBuIbqM41ycp46mVTZh6","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: q1w2e3r4
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$9uXHBqAJGcOwUOMrXHLSBOkjyJRtuznh\/4lG4F7KM.\/VqtIXkqCyS","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: q1w2e3r4
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$9uXHBqAJGcOwUOMrXHLSBOkjyJRtuznh\/4lG4F7KM.\/VqtIXkqCyS","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+Entrou com: juliaramosrodrigues0801@gmail.com
+Senha recebida: q1w2e3r4
+Resultado SELECT: {"idusuario":1,"email":"juliaramosrodrigues0801@gmail.com","senha":"$2y$10$9uXHBqAJGcOwUOMrXHLSBOkjyJRtuznh\/4lG4F7KM.\/VqtIXkqCyS","nivel":4,"atividade":1}
+Hash verificado OK
+Login OK para juliaramosrodrigues0801@gmail.com
+=======
+>>>>>>> c51b8f8 (Atualização: ajustes no cadastro de usuário e localidade)
+Tentativa: JULIAPOIBOBONA@gmail.com
+Tentativa: JULIAPOIBOBONA@gmail.com
+Tentativa: JULIAPOIBOBONA@gmail.com
+Tentativa: igrejadojaime@gmail.com
+Tentativa: igrejadojaime@gmail.com
+Tentativa: JULIAPOIBOBONA@gmail.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: paulo@exemplo
+Tentativa: maria@exemplo
+Tentativa: ana@exemplo
+Tentativa: ana@exemplo
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: joao@exemplo.com
+Tentativa: ana@exemplo
