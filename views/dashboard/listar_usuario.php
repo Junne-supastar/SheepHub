@@ -46,61 +46,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Usuários</title>
-    <link rel="stylesheet" href="assets/css/dashboardcrud.css">
+    <link rel="stylesheet" href="../assets/css/dashboardcrud.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <script src="js/dashboard.js" defer></script>
+    <script src="../assets/js/dashboard.js" defer></script>
 </head>
 
 <body>
     <div class="container-principal">
-        <aside id="menu-lateral" class="menu-lateral">
-            <a href="#" class="logo">
-
-                <span>SheepHub</span>
-            </a>
-            <nav>
-                <a href="#" class="link-navegacao"><span>Feed</span></a>
-                <a href="#" class="link-navegacao"><span>Mensagens</span></a>
-                <a href="#" class="link-navegacao"><span>Eventos</span></a>
-                <a href="#" class="link-navegacao"><span>Igrejas</span></a>
-                <a href="#" class="link-navegacao"><span>Meu perfil</span></a>
-                <a href="dashboard_financas.php" class="link-navegacao ativo"><span>Dashboard</span></a>
-                <a href="Membros.php" class="link-navegacao ativo"><span>Provisório</span></a>
-                <a href="listar_usuario.php" class="link-navegacao ativo"><span>Provisório 2</span></a>
-                <button class="botao-postar">Postar</button>
-            </nav>
-            <div>
-                <a href="#" class="link-navegacao"><span>Configurações</span></a>
-                <a href="#" class="link-navegacao"><span>Sair</span></a>
-            </div>
-        </aside>
-
-        <div id="fundo-overlay" class="hidden"></div>
-
-        <div class="conteudo-principal">
-            <header class="cabecalho">
-                <button id="botao-menu" class="botao-menu">
-
-                </button>
-                <div class="busca-container">
-                    <input type="text" placeholder="Pesquisar" class="campo-busca">
-                </div>
-                <div class="acoes-cabecalho">
-                    <div class="info-perfil">
-                        <img src="https://placehold.co/40x40/E2E8F0/4A5568?text=CS" alt="Avatar">
-                        <div class="texto-perfil">
-                            <p><strong>Augustus</strong></p>
-                            <p style="font-size: 0.8rem; color: var(--cor-texto-secundario)">Membro</p>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
-            <main>
+        <?php include __DIR__ . '/../includes/sidebar.php'; ?>
+            <main class="content">
                 <h2>Bem vindo, Augustus!</h2>
                 <h1>Dashboard</h1>
 

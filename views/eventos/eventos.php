@@ -4,48 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SheepHub-Eventos</title>
-    <link rel="stylesheet" href="css/eventos.css">
+    <link rel="stylesheet" href="../assets/css/eventos.css">
 </head>
 <body>
-    <aside class="sidebar">
-    <br>
-    <div class="logo">
-      <div class="ligo"><img src="imgfeed/ovelha.png" alt="SheepHub Logo" class="ovelha"><p class="shep">SheepHub</p></div>
-      <hr>
-    </div>
-    <nav>
-      <ul>
-        <br>
-        <br>
-        <li><img src="imgfeed/homebranca.png" alt="" class="icones"><a href="feed2.html">Feed</a></li>
-        <br>
-        <li><img src="imgfeed/mensages.png" alt="" class="icones"><a href="mensagem.html">Mensagens</a></li>
-        <br>
-        <li><img src="imgfeed/eventospreto.png" alt="" class="icones"><a href="eventos.html" id="iconescuro">Eventos</a></li>
-        <br>
-        <li><img src="imgfeed/greja.png" alt="" class="icones"><a href="#">Igrejas</a></li>
-        <br>
-        <li><img src="imgfeed/perfil.png" alt="" class="icones"><a href="perfil.html">Meu Perfil</a></li>
-        <br>
-        <li><button class="postar"><a href="#">Postar</a></button></li>
-        <hr>
-        <br>
-        <li><img src="imgfeed/config.png" alt="" class="icones"><a href="#">Configurações</a></li>
-        <br>
-        <li><img src="imgfeed/sair.png" alt="" class="icones"><a href="#">Sair</a></li>
-      </ul>
-    </nav>
-  </aside>
 
-  <div class="main-content">
-    <header class="top-bar">
-      <input type="search" placeholder="Pesquisar" class="pesquisa">
-      <img src="imgfeed/Vector.png" alt="" class="lupa">
-      <div class="user-info">
-        <img src="imgfeed/clara.png" alt="User Avatar">
-        <span>Clara Silva</span>
-      </div>
-    </header>
+<?php include __DIR__ . '/../includes/sidebar.php'; ?>
+
 
     <div class="content-wrapper">
 
@@ -53,49 +17,49 @@
         <div class="car">
           
           <div class="card">
-          <img src="imgfeed/jesus.png" alt="Imagem do Card" class="card-img">
+          <img src="../assets/img/jesus.png" alt="Imagem do Card" class="card-img">
           <div class="card-content">
             <h2 class="card-title">Retiro de jovens! <p class="horario">10/07 - 19h</p></h2>
             <p class="card-text">Se increva para o retiro de jovens da primeira igreja batista em madureira!!!</p>
             <div class="baixo">
-          <img src="imgfeed/fotinho.png" alt="" class="fotinho">
+          <img src="../assets/img/fotinho.png" alt="" class="fotinho">
           <div class="textos">
             <h2 class="pib">PIB Madureira</h1>
             <p class="data">18 de agosto</p>
           </div>
-          <figure><img src="imgfeed/card icon.png" alt="" class="favoritos"></figure>
+          <figure><img src="../assets/img/card icon.png" alt="" class="favoritos"></figure>
          </div>
           </div>
             </div>
           
              <div class="card">
-          <img src="imgfeed/jesus.png" alt="Imagem do Card" class="card-img">
+          <img src="../assets/img/jesus.png" alt="Imagem do Card" class="card-img">
           <div class="card-content">
             <h2 class="card-title">Retiro de jovens! <p class="horario">10/07 - 19h</p></h2>
             <p class="card-text">Se increva para o retiro de jovens da primeira igreja batista em madureira!!!</p>
             <div class="baixo">
-          <img src="imgfeed/fotinho.png" alt="" class="fotinho">
+          <img src="../assets/img/fotinho.png" alt="" class="fotinho">
           <div class="textos">
             <h2 class="pib">PIB Madureira</h1>
             <p class="data">18 de agosto</p>
           </div>
-          <figure><img src="imgfeed/card icon.png" alt="" class="favoritos"></figure>
+          <figure><img src="../assets/img/card icon.png" alt="" class="favoritos"></figure>
          </div>
           </div>
             </div>
 
              <div class="card">
-          <img src="imgfeed/jesus.png" alt="Imagem do Card" class="card-img">
+          <img src="../assets/img/jesus.png" alt="Imagem do Card" class="card-img">
           <div class="card-content">
             <h2 class="card-title">Retiro de jovens! <p class="horario">10/07 - 19h</p></h2>
             <p class="card-text">Se increva para o retiro de jovens da primeira igreja batista em madureira!!!</p>
             <div class="baixo">
-          <img src="imgfeed/fotinho.png" alt="" class="fotinho">
+          <img src="../assets/img/fotinho.png" alt="" class="fotinho">
           <div class="textos">
             <h2 class="pib">PIB Madureira</h1>
             <p class="data">18 de agosto</p>
           </div>
-          <figure><img src="imgfeed/card icon.png" alt="" class="favoritos"></figure>
+          <figure><img src="../assets/img/card icon.png" alt="" class="favoritos"></figure>
          </div>
           </div>
             </div>
@@ -106,49 +70,49 @@
         <div class="car">
 
           <div class="card">
-       <img src="imgfeed/jesus.png" alt="Imagem do Card" class="card-img">
+       <img src="../assets/img/jesus.png" alt="Imagem do Card" class="card-img">
        <div class="card-content">
          <h2 class="card-title">Retiro de jovens! <p class="horario">10/07 - 19h</p></h2>
          <p class="card-text">Se increva para o retiro de jovens da primeira igreja batista em madureira!!!</p>
          <div class="baixo">
-          <img src="imgfeed/fotinho.png" alt="" class="fotinho">
+          <img src="../assets/img/fotinho.png" alt="" class="fotinho">
           <div class="textos">
             <h2 class="pib">PIB Madureira</h1>
             <p class="data">18 de agosto</p>
           </div>
-          <figure><img src="imgfeed/card icon.png" alt="" class="favoritos"></figure>
+          <figure><img src="../assets/img/card icon.png" alt="" class="favoritos"></figure>
          </div>
        </div>
          </div>
 
          <div class="card">
-       <img src="imgfeed/jesus.png" alt="Imagem do Card" class="card-img">
+       <img src="../assets/img/jesus.png" alt="Imagem do Card" class="card-img">
        <div class="card-content">
          <h2 class="card-title">Retiro de jovens! <p class="horario">10/07 - 19h</p></h2>
          <p class="card-text">Se increva para o retiro de jovens da primeira igreja batista em madureira!!!</p>
          <div class="baixo">
-          <img src="imgfeed/fotinho.png" alt="" class="fotinho">
+          <img src="../assets/img/fotinho.png" alt="" class="fotinho">
           <div class="textos">
             <h2 class="pib">PIB Madureira</h1>
             <p class="data">18 de agosto</p>
           </div>
-          <figure><img src="imgfeed/card icon.png" alt="" class="favoritos"></figure>
+          <figure><img src="../assets/img/card icon.png" alt="" class="favoritos"></figure>
          </div>
        </div>
          </div>
 
          <div class="card">
-       <img src="imgfeed/jesus.png" alt="Imagem do Card" class="card-img">
+       <img src="../assets/img/jesus.png" alt="Imagem do Card" class="card-img">
        <div class="card-content">
          <h2 class="card-title">Retiro de jovens! <p class="horario">10/07 - 19h</p></h2>
          <p class="card-text">Se increva para o retiro de jovens da primeira igreja batista em madureira!!!</p>
          <div class="baixo">
-          <img src="imgfeed/fotinho.png" alt="" class="fotinho">
+          <img src="../assets/img/fotinho.png" alt="" class="fotinho">
           <div class="textos">
             <h2 class="pib">PIB Madureira</h1>
             <p class="data">18 de agosto</p>
           </div>
-          <figure><img src="imgfeed/card icon.png" alt="" class="favoritos"></figure>
+          <figure><img src="../assets/img/card icon.png" alt="" class="favoritos"></figure>
          </div>
        </div>
          </div>
@@ -167,7 +131,7 @@
         <div class="conversations">
           <br>
           <div class="conversation">
-            <img src="imgfeed/modelo2.png" alt="Avatar João">
+            <img src="../assets/img/modelo2.png" alt="Avatar João">
             <div class="conversation-info">
               <span class="conversation-name">Bernardo Cota</span>
               <span class="last-message">Olá, tudo bem?</span>
@@ -175,7 +139,7 @@
         </div>
           <br>
           <div class="conversation">
-            <img src="imgfeed/modelo1.png" alt="Avatar Maria">
+            <img src="../assets/img/modelo1.png" alt="Avatar Maria">
             <div class="conversation-info">
               <span class="conversation-name">Maria Souza</span>
               <span class="last-message">Vamos nos encontrar?</span>
@@ -183,7 +147,7 @@
           </div>
           <br>
           <div class="conversation">
-              <img src="imgfeed/andreia.png" alt="Avatar Andreia">
+              <img src="../assets/img/andreia.png" alt="Avatar Andreia">
             <div class="conversation-info">
               <span class="conversation-name">Andreia Lima</span>
               <span class="last-message">Fizemos uma oração por...</span>
@@ -191,7 +155,7 @@
           </div>
           <br>
           <div class="conversation">
-              <img src="imgfeed/souza.png" alt="Avatar Souza">
+              <img src="../assets/img/souza.png" alt="Avatar Souza">
             <div class="conversation-info">
                 <span class="conversation-name">Gabriel Souza</span>
                 <span class="last-message">Vai ao culto hoje?</span>
@@ -203,7 +167,7 @@
         <h2 class="minis">Ministerios</h2>
         <br>
         <div class="conversation" id="grupos">
-            <img src="imgfeed/cruzazul.png" alt="Avatar Cruz">
+            <img src="../assets/img/cruzazul.png" alt="Avatar Cruz">
             <div class="conversation-info">
                 <span class="conversation-name">Grupo Nazateen</span>
                 <span class="last-message">Amanda: Pessoal, temos que...</span>

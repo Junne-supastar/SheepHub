@@ -22,7 +22,7 @@
         <h2>Entre com sua conta</h2>
       </header>
 
-      <form class="formulario-login" action="../../public/index.php" method="POST">
+      <form class="formulario-login" action="/index.php" method="POST">
         <input type="hidden" name="acao" value="login">
 
         <fieldset class="grupo-campos">
@@ -38,7 +38,7 @@
         <button type="submit" class="botao-login">Login</button>
 
         <p class="texto-cadastro">
-          Não possui conta? <a href="/SheepHub/views/auth/escolha.php">Cadastre-se</a>
+          Não possui conta? <a href="escolha.php">Cadastre-se</a>
         </p>
       </form>
 
@@ -53,9 +53,10 @@
       <div class="divisor">Ou entre com</div>
 
       <nav class="login-social">
-        <a href="#"><img src="/img/logoapple.svg" alt="Entrar com Apple"></a>
-        <a href="#"><img src="/img/googleicon.svg" alt="Entrar com Google"></a>
-        <a href="#"><img src="/img/iconfacebook.png" alt="Entrar com Facebook"></a>
+        <a href="#"><img src="../assets/img/logoapple.svg" alt="Entrar com Apple"></a>
+        <a href="#"><img src="../assets/img/googleicon.svg" alt="Entrar com Google"></a>
+        <a href="#"><img src="../assets/img/iconfacebook.png" alt="Entrar com Facebook"></a>
+
       </nav>
     </section>
   </main>

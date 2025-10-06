@@ -35,7 +35,7 @@
             return $stmt->execute([
                 'idusuario'     => $idusuario,
                 'cnpj'          => $cnpj,
-                'cep'           => $cep,
+                'cep'           => empty($cep) ? null : $cep,
                 'telefone'      => $telefone,
                 'site'          => $site,
                 'descricao'     => $descricao,
