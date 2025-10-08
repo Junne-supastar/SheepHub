@@ -45,11 +45,6 @@ body {
 
 }
 
-.content {
-    padding: 30px 20px;
-    margin-left: 240px;
-}
-
 /* == HEADER == */
 
 .main-header {
@@ -59,7 +54,6 @@ body {
     height: 8vh; 
     padding: 15px 20px;
     margin-left: 220px;
-
     display: flex;
     justify-content: space-between;
     align-items: center; 
@@ -70,28 +64,10 @@ body {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .header-center {
     width: 550px;
-
     display: flex;
     gap: 20px;
-
-
 }
 
 .search-bar {
@@ -111,7 +87,6 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,7 +98,6 @@ body {
    width: 15px;
    height: 15px;
    color: var(--cinza-escuro);
-
    background-image: url(./img/vetor09-sidebar.svg);
    background-repeat: no-repeat;
    background-size: cover;
@@ -143,10 +117,8 @@ body {
 
 .item {
     background-color: #7BAEC2;
-
     width: 35px;
     height: 35px;
-
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -155,7 +127,6 @@ body {
 
 .item > img {
     width: 17px;
-
 }
 
 
@@ -173,26 +144,18 @@ body {
     position: absolute; 
     top: -2px; 
     right: -2px;
-
     background-color: #e74c3c; 
     color: white;
     font-size: 10px;
-    
     border-radius: 50%; 
     width: 16px;
     height: 16px;
-
-    
     display: flex;
     align-items: center;
     justify-content: center;
     
 }
 
-
-.header-right {
-
-}
 
 .user-info {
     display: flex;
@@ -227,9 +190,6 @@ body {
 
 
 
-
-
-
 /* == SIDEBAR GERAL == */
 .logo-sidebar {
     display: flex;
@@ -251,8 +211,10 @@ body {
 }
 
 .sidebar {
+    overflow: hidden;
     background-color: var(--azul-claro);
     width: 220px;
+    max-width: 220px;
     height: 100vh; 
     padding: 20px 10px;
     position: fixed;
@@ -306,7 +268,6 @@ body {
     font-weight: 600;  
     margin-top: 20px;
     margin-bottom: 20px;
-    
     display: flex;
     align-items: center;
     justify-content: center;

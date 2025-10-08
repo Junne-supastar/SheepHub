@@ -12,140 +12,14 @@
     display: flex;
   }
   
-/* Sidebar de Navegação */
-  #iconescuro{
-    color: #1F3440;
-  }
-  .ligo{
-    display: flex;
-    align-items: center;
-  }
-  .postar{
-    margin-left: 25px;
-    width: 100px;
-    padding: 10px;
-    border-radius: 50px;
-    background-color: #1F3440;
-    border-color: #1F3440;
-  }
-  .icones{
-    margin-right: 20px;
-    margin-left: 20px;
-    width: 25px;
-    height: 24px;
-
-  }
-
-  .shep{
-    color: #fff;
-    font-size: 25px;
-  }
-
-  hr{
-    margin-top: 10px;
-    height: 1px;
-    width: 100%;
-  }
-
-  li{
-    display: flex;
-    align-items: center;
-    font-size: 20px;
-  }
-
-  .ovelha{
-    height: 30px;
-    width: 40px;
-    margin-right: 5px;
-    margin-left: 20px;
-  }
-  .sidebar {
-    width: 250px;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    background-color: #80CDEB;
-    position: absolute;
-  }
-  
-  .sidebar .logo  {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  .sidebar nav ul {
-    margin-left: 20px;
-    list-style: none;
-    text-align: center;
-    padding: 0px;
-  }
-  
-  .sidebar nav ul li {
-  margin: 15px 0;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  }
-  
-  .sidebar nav ul li a {
-    color: #fff;
-    text-decoration: none;
-  }
-   .sidebar nav ul li a:hover {
-    color: #1F3440;
-    transition: 1s;
-  }
-
-  
-  
   /* Área principal */
   .main-content {
     flex: 1;
     display: flex;
     flex-direction: column;
-  }
-  
-  /* Top Bar */
-  .pesquisa{
-    margin-left: 365px;
-    border: 20px;
-    background-color: #F3F3F3;
-    color: #1F3440;
-  }
-  .lupa{
-    margin-top: 14px;
-    margin-left: 930px;
-    position: absolute;
-    transform: translateY(-50%);
-    width: 15px;
-    height: 15px;
-    pointer-events: none;
-  }
-  .top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 10px 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .top-bar input[type="search"] {
-    padding: 8px;
-    width: 600px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .user-info img {
-    width: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
+    margin-left: 0;
+    margin-top: 50px;
+    margin-left: -1000px;
   }
   
   /* Wrapper para Feed e Mensagens */
@@ -155,23 +29,29 @@
     gap: 20px;
     flex: 1;
     overflow-y: auto;
+    margin-left: -100px;
   }
   
   /* Seção do Feed */
   .feed {
     flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
   }
   
+  /* Postagens centralizadas sem margem lateral exagerada */
   .post {
     background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 50px;
     width: 670px;
     height: 370px;
-    border-radius: 50px;
-    margin-left: 330px;
-    margin-right: 100px;
+    /* Remova as margens laterais que empurram para a direita */
+    margin-left: 0;
+    margin-right: 0;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
   
@@ -297,7 +177,6 @@
   }
 
 
-
   
   /* Janela de Chat */
   .chat-window {
@@ -362,4 +241,3 @@
     background-color: #555;
   }
 
-    
