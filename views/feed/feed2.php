@@ -74,56 +74,6 @@
     
           <!-- Adicione outras postagens conforme necessário -->
         </section>
-        <!-- Seção de Mensagens -->
-        <section class="messages">
-          <div class="messages-header">
-            <h2>Mensagens</h2>
-          </div>
-          <div class="conversations">
-            <br>
-            <div class="conversation">
-              <img src="../assets/img/modelo2.png" alt="Avatar João">
-              <div class="conversation-info">
-                <span class="conversation-name">Bernardo Cota</span>
-                <span class="last-message">Olá, tudo bem?</span>
-              </div>
-            </div>
-            <br>
-            <div class="conversation">
-              <img src="../assets/img/modelo1.png" alt="Avatar Maria">
-              <div class="conversation-info">
-                <span class="conversation-name">Maria Souza</span>
-                <span class="last-message">Vamos nos encontrar?</span>
-              </div>
-            </div>
-            <br>
-             <div class="conversation">
-              <img src="../assets/img/andreia.png" alt="Avatar Andreia">
-              <div class="conversation-info">
-                <span class="conversation-name">Andreia Lima</span>
-                <span class="last-message">Fizemos uma oração por...</span>
-              </div>
-            </div>
-            <br>
-             <div class="conversation">
-              <img src="../assets/img/souza.png" alt="Avatar Souza">
-              <div class="conversation-info">
-                <span class="conversation-name">Gabriel Souza</span>
-                <span class="last-message">Vai ao culto hoje?</span>
-              </div>
-            </div>
-            <!-- Adicione outras conversas se necessário -->
-          </div>
-          <h2 class="minis">Ministerios</h2>
-          <br>
-          <div class="conversation" id="grupos">
-              <img src="../assets/img/cruzazul.png" alt="Avatar Cruz">
-              <div class="conversation-info">
-                <span class="conversation-name">Grupo Nazateen</span>
-                <span class="last-message">Amanda: Pessoal, temos que...</span>
-              </div>
-    
-        </section>
       </div>
     </div>
   </main>
