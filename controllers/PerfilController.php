@@ -11,12 +11,20 @@ class PerfilController {
 
     /** Exibe o perfil do usuário */
     public function verPerfil($idusuario) {
+<<<<<<< HEAD
         $usuario = $this->model->getUsuario($idusuario);
         $perfil = $this->model->getPerfilMembro($idusuario);
 
         if (!$perfil) {
           header("Location: /SheepHub/rotas/cadastro-perfil-salvar.php");
 exit;
+=======
+        $perfilCompleto = $this->model->getPerfilComCidade($idusuario);
+
+        if (!$perfilCompleto) {
+            header("Location: /SheepHub/rotas/cadastro-perfil-salvar.php");
+            exit;
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
         }
 
         include __DIR__ . '/../views/perfil-membro.php';
@@ -26,17 +34,25 @@ exit;
     public function salvarPerfil($postData, $fileData) {
         $idusuario = $postData['idusuario'];
         $biografia = $postData['biografia'] ?? '';
+<<<<<<< HEAD
         $funcao = $postData['funcao'] ?? '';
         $cep = $postData['cep'] ?? '';
         $redes_sociais = $postData['redes_sociais'] ?? '';
 
         // Captura arquivos enviados (se houver)
+=======
+        $cep = $postData['cep'] ?? '';
+        $redes_sociais = $postData['redes_sociais'] ?? '';
+
+        // Upload de arquivos
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
         $foto_perfil = isset($fileData['foto_perfil']) ? $this->uploadArquivo($fileData['foto_perfil']) : null;
         $foto_fundo  = isset($fileData['foto_fundo']) ? $this->uploadArquivo($fileData['foto_fundo']) : null;
 
         $perfilExistente = $this->model->getPerfilMembro($idusuario);
 
         if ($perfilExistente) {
+<<<<<<< HEAD
             // Se o usuário não enviou novas fotos, mantém as antigas
             if (!$foto_perfil) $foto_perfil = $perfilExistente['foto_perfil'];
             if (!$foto_fundo)  $foto_fundo  = $perfilExistente['foto_fundo'];
@@ -44,6 +60,16 @@ exit;
             $this->model->updatePerfilMembro($idusuario, $biografia, $funcao, $cep, $redes_sociais, $foto_perfil, $foto_fundo);
         } else {
             $this->model->insertPerfilMembro($idusuario, $biografia, $funcao, $cep, $redes_sociais, $foto_perfil, $foto_fundo);
+=======
+            // Mantém as fotos antigas se não houver upload novo
+            if (!$foto_perfil) $foto_perfil = $perfilExistente['foto_perfil'];
+            if (!$foto_fundo)  $foto_fundo  = $perfilExistente['foto_fundo'];
+
+            $this->model->updatePerfilMembro($idusuario, $biografia, $cep, $redes_sociais, $foto_perfil, $foto_fundo);
+        } else {
+            // Cria perfil novo sem passar null
+            $this->model->insertPerfilMembro($idusuario, $biografia, $cep, $redes_sociais, $foto_perfil, $foto_fundo);
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
         }
 
         header("Location: /SheepHub/views/perfil-membro.php?id=$idusuario");
@@ -58,8 +84,15 @@ exit;
         $genero = trim($dados['genero']);
 
         $perfilExistente = $this->model->getPerfilMembro($idusuario);
+<<<<<<< HEAD
         if (!$perfilExistente) {
             $this->model->insertPerfilMembro($idusuario, '', '', $cep, '', null, null);
+=======
+
+        if (!$perfilExistente) {
+            // Cria perfil novo apenas com dados básicos, fotos ficam vazias
+            $this->model->insertPerfilMembro($idusuario, '', $cep, '', '', '');
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
         }
 
         $this->model->salvarBasico($idusuario, $cep, $tel, $genero);

@@ -43,6 +43,7 @@ exit;
 <body>
 <div class="container-geral">
     <aside id="menu-lateral" class="menu-lateral">
+<<<<<<< HEAD
         <a href="#" class="logo"><span>SheepHub</span></a>
         <nav>
             <a href="#" class="link-navegacao"><span>Feed</span></a>
@@ -57,6 +58,9 @@ exit;
             <a href="#" class="link-navegacao"><span>Configurações</span></a>
             <a href="#" class="link-navegacao"><span>Sair</span></a>
         </div>
+=======
+  <?php include __DIR__ . '/includes/sidebar.php'; ?>
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
     </aside>
 
     <div id="fundo-overlay" class="hidden"></div>

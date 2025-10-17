@@ -9,15 +9,24 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+<<<<<<< HEAD
     <link rel="stylesheet" href="../assets/css/dashboard-finanças02.css">
     <script src="../assets/js/dashboard-finanças02.js" defer></script>
+=======
+    <link rel="stylesheet" href="/SheepHub/views/assets/css/dashboard-finanças02.css">
+    <script src="/SheepHub/views/assets/js/dashboard-finanças02.js" defer></script>
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
 </head>
 <body>
     <div class="container-principal">
         <?php include __DIR__ . '/../includes/sidebar.php'; ?>
 
         <div id="fundo-overlay" class="hidden"></div>
+<<<<<<< HEAD
 
+=======
+        <div class="main-content">
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
         
             
             <main class="content">

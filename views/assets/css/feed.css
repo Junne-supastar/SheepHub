@@ -1,0 +1,471 @@
+@charset "UTF-08";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+
+/*cores*/
+
+--azul-escuro: #1F3440;
+--azul-claro: #80CDEB;
+--azul: #7BAEC2;
+--azul-acizentado: #C0CED6;
+--cinza-salmao: #EEE8DC;
+--salmao: #F0D1A6;
+--amarelo-medio: #F2CF87;
+--amarelo-claro: #FFEBAA;
+--amarelo-fechado: #ECBE5F;
+--amarelo-escuro: #AB8E52;
+--amarelo: #FCB628;
+--amarelo-hover: #F3AB1C;
+--vermelho: #CF624A;
+--verde: #8BCC74;
+--branco: #FFFFFF;
+--cinza-padrao: #ECF2F5;
+--cinza-claro: #D9D9D9;
+--cinza: #9B9B9B;
+--cinza-escuro: #565656;
+--preto: #000000;
+
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-color: #F9F9F9;
+}
+
+/* Menu Lateral (Sidebar) */
+.menu-lateral {
+    background-color: var(--azul-claro);
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    border-right: 1px solid var(--cor-cinza-borda);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--azul-escuro);
+}
+
+.logo svg {
+    width: 2rem;
+    height: 2rem;
+    color: var(--cor-azul-escuro);
+}
+
+nav {
+    flex-grow: 1;
+}
+
+.link-navegacao {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    margin: 0.25rem 0;
+    gap: 0.75rem;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--branco);
+    transition: background-color 0.2s;
+}
+
+.link-navegacao svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+}
+
+.botao-postar {
+    width: 100%;
+    height: 3rem;
+    margin-top: 1.5rem;
+    background-color: var(--azul-escuro);
+    color: var(--branco);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.conteudo-principal {
+    flex-grow: 1;
+    margin-left: 260px;
+}
+
+/* Cabeçalho (Header) */
+.cabecalho {
+    background-color: var(--branco);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--cor-cinza-borda);
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+}
+
+.botao-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.busca-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.campo-busca {
+    width: 100%;
+    padding: 0.6rem 1rem;
+    border-radius: 200px;
+    border: 1px solid var(--cinza-claro);
+    background-color: var(--branco);
+}
+
+.acoes-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-perfil {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.info-perfil img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/* main */
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+
+    margin-left: 260px;
+    width: 72%;
+    height: 100vh;
+    padding: 1.5rem;
+}
+
+.post {
+    border: 1px solid var(--cinza-claro);
+    width: 500px;
+    height: 600px;
+    border-radius: 20px;
+    background-color: var(--branco);
+}
+
+.interacoes, .info-autor {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.info-post {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.user-autor {
+    font-weight: 600;
+}
+
+.img-autor {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+}
+
+.img-post {
+    width: 100%;
+    height: 400px;
+    background-image: url('celula.jpg');
+    background-size: cover;
+    background-position: bottom;
+}
+
+.numeros-post i {
+    color: var(--amarelo-medio);
+    font-size: 1.5rem;
+    transition: all 300ms ease-out;
+}
+
+.interacoes {
+    display: flex;
+    gap: 8%;
+}
+
+.interacao:hover {
+    color: var(--amarelo-escuro);
+    cursor: pointer;
+}
+
+.numeros-post {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/*main e aside lado a lado*/
+.conteudo {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* main ocupa mais espaço */
+.conteudo aside {
+    flex: 1;
+    background-color: var(--amarelo-escuro);
+    padding: 1rem;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px; /* largura fixa */
+    border-left: 2px solid var(--cinza-claro);
+    overflow-y: auto; /* caso o conteúdo do aside seja maior que a tela */
+}
+
+/* Ajuste no main para não ficar coberto pelo aside */
+.conteudo main {
+    flex: 3;
+    height: auto;
+    margin-right: 320px; /* espaço para o aside fixo */
+}
+
+/* modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(6px);
+  z-index: 999;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.ativo {
+  display: flex;
+}
+
+/* ===== MODAL 1 ===== */
+.modal-conteudo {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 2rem;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  animation: aparecer 0.3s ease;
+  position: relative;
+}
+
+.modal-conteudo h2 {
+  background-color: var(--azul-claro);
+  color: var(--azul-escuro);
+  margin: -2rem -2rem 1rem -2rem;
+  padding: 1rem;
+  border-radius: 15px 15px 0 0;
+}
+
+.modal-img {
+  width: 120px;
+  margin: 1rem auto;
+  display: block;
+}
+
+.botao-arquivo {
+  background-color: var(--azul-acizentado);
+  border: none;
+  color: var(--branco);
+  border-radius: 20px;
+  padding: 0.7rem 1.2rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.botao-arquivo:hover {
+  background-color: var(--azul);
+}
+
+.botao-fechar {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: var(--azul-escuro);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.botao-fechar:hover {
+  color: var(--vermelho);
+}
+
+/* ===== MODAL 2 (Ajustar) ===== */
+.modal-ajustar-conteudo {
+  background-color: var(--branco);
+  border-radius: 15px;
+  width: 80%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  animation: aparecer 0.3s ease;
+}
+
+.ajustar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--azul-claro);
+  color: var(--azul-escuro);
+  padding: 1rem;
+  border-radius: 15px 15px 0 0;
+}
+
+.ajustar-corpo {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.ajustar-imagem {
+  flex: 2;
+  background-color: var(--cinza-claro);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.ajustar-imagem img {
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
+
+.ajustar-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.autor {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.autor img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+textarea {
+  width: 100%;
+  height: 80px;
+  resize: none;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--cinza-claro);
+}
+
+.contador {
+  font-size: 0.8rem;
+  text-align: right;
+  color: var(--cinza);
+}
+
+.lista-amigos {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.amigo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--cinza-padrao);
+  border-radius: 10px;
+  padding: 0.4rem;
+}
+
+.amigo img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.botao-voltar,
+.botao-proximo {
+  background: none;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--azul-escuro);
+  transition: 0.2s;
+}
+
+.bx-arrow-left {
+    display: flex;
+    font-size: 1.5rem;
+}
+
+.botao-voltar:hover,
+.botao-proximo:hover {
+  color: var(--branco);
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+

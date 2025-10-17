@@ -22,7 +22,12 @@
         <h2>Entre com sua conta</h2>
       </header>
 
+<<<<<<< HEAD
       <form class="formulario-login" action="../../public/actions/index.php" method="POST">
+=======
+<form class="formulario-login" action="/SheepHub/public/index.php" method="POST">
+
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
         <input type="hidden" name="acao" value="login">
 
         <fieldset class="grupo-campos">
@@ -30,24 +35,48 @@
           <input type="password" name="senha" placeholder="Senha" required>
         </fieldset>
 
+<<<<<<< HEAD
         <div class="opcoes-login">
           <label><input type="checkbox"> Lembrar senha</label>
           <a href="../recuperacao_senha/solicitar.php">Esqueceu a senha?</a>
         </div>
 
         <button type="submit" class="botao-login">Login</button>
+=======
+<div class="opcoes-login">
+  <label><input type="checkbox"> Lembrar senha</label>
+  <a href="../recuperacao_senha/solicitar.php">Esqueceu a senha?</a>
+</div>
+
+<?php if (!empty($_SESSION['erro_login'])): ?>
+  <p style="color: #b30000; font-weight: 500; font-size: 14px; margin: 8px 0;">
+    <?= $_SESSION['erro_login']; ?>
+  </p>
+  <?php unset($_SESSION['erro_login']); ?>
+<?php endif; ?>
+
+<button type="submit" class="botao-login">Login</button>
+
+
+
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
 
         <p class="texto-cadastro">
           Não possui conta? <a href="escolha.php">Cadastre-se</a>
         </p>
       </form>
 
+<<<<<<< HEAD
       <?php if (!empty($_SESSION['erro'])): ?>
   <div id="toast" class="toast" data-msg="<?= addslashes($_SESSION['erro']) ?>"></div>
   <?php unset($_SESSION['erro']); ?>
 <?php else: ?>
   <div id="toast" class="toast"></div>
 <?php endif; ?>
+=======
+
+
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
 
 
       <div class="divisor">Ou entre com</div>

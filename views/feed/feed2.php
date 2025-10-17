@@ -74,6 +74,7 @@
     
           <!-- Adicione outras postagens conforme necessário -->
         </section>
+<<<<<<< HEAD
         <!-- Seção de Mensagens -->
         <section class="messages">
           <div class="messages-header">
@@ -124,6 +125,8 @@
               </div>
     
         </section>
+=======
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
       </div>
     </div>
   </main>

@@ -1,9 +1,17 @@
 <?php
+<<<<<<< HEAD
 require_once __DIR__ . '/../../config/Conexao.php';
 require_once __DIR__ . '/../../models/usuario.php';
 require_once __DIR__ . '/../../controllers/AuthController.php';
 require_once __DIR__ . '/../../models/PerfilInstituicao.php';
 require_once __DIR__ . '/../../controllers/PerfilInstituicaoController.php';
+=======
+require_once __DIR__ . '/../config/Conexao.php';
+require_once __DIR__ . '/../models/usuario.php';
+require_once __DIR__ . '/../controllers/AuthController.php';
+require_once __DIR__ . '/../models/PerfilInstituicao.php';
+require_once __DIR__ . '/../controllers/PerfilInstituicaoController.php';
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 

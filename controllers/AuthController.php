@@ -25,7 +25,11 @@ class AuthController {
             break;
         case 2: // Líder
         case 3: // Líder de comunidade
+<<<<<<< HEAD
             header("Location: /SheepHub/views/perfil-lider.php");
+=======
+            header("Location: /SheepHub/views/dashboard/dashboard_financas.php");
+>>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
             break;
         case 4: // Membro
             header("Location: /SheepHub/views/perfil-membro.php");
