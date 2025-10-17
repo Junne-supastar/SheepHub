@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+}
+
+:root {
+    --c01: #fff;
+    --c02: #000;
+    --c03: #DBF2FF;
+    --c04: #FCB628;
+    --c05: #80CDEB;
+    --c06: #5aadce;
+    --c07: #e5941a;
+    --c08: #76838A;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--c03);
+    font-family: 'Montserrat', sans-serif;
+}
+
+main {
+    width: 70%;
+    height: 70%;
+    background-color: var(--c01);
+    display: flex;
+    border-radius: 30px;
+}
+
+#ovelha {
+    width: 600px;
+    height: 100%;
+    border-radius: 30px 0px 0px 30px;
+
+    background-image: url('/views/auth/assets/img/ovelha.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.destaqueTexto {
+    color: var(--c05);
+}
+
+#errorModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+#errorModal .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 400px;
+    text-align: center;
+}
+#errorModal button {
+    padding: 5px 15px;
+    margin-top: 10px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+h3 {
+    margin-top: 20px;
+}
+
+.cadastrar {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+p {
+    margin-top: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    font-family: montserrat;
+    color: var(--c01);
+    font-size: 1rem;
+
+    margin: auto;
+    display: block;
+    width: 230px;
+    height: 50px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.tipo {
+    background-color: var(--c05);
+    transition: background-color 0.3s ease;
+}
+
+.tipo:hover {
+    background-color: var(--c06);
+}
+
+#login {
+    color: var(--c06);
+}
+
+.inserir {
+    width: 300px;
+    height: 40px;
+    border: 1px solid var(--c08);
+    border-radius: 15px;
+    padding-left: 10px;
+}
+
+.enviar {
+    background-color: var(--c04);
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.enviar:hover {
+    background-color: var(--c07);
+}
+
+input::placeholder {
+    font-family: montserrat; 
+}
+
+input:focus {
+  outline: none; /* remove a borda preta padrão */
+  border-color: var(--c02); /* muda a cor da borda */
+  box-shadow: 0 0 5px var(--c03); /* brilho suave */
+}
+
+#cadastroTexto {
+    text-align: center;
+}
+
+@media (max-width: 1330px) {
+  #ovelha {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+    .cadastrar {
+        width: 90%;
+        height: 80%;
+    }
+}

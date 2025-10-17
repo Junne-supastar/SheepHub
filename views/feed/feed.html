@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard SheepHub</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+
+    <link rel="stylesheet" href="../views/assets/css/feed.css">
+</head>
+<body>
+
+    <div class="container-principal">
+        <aside id="menu-lateral" class="menu-lateral">
+            <a href="#" class="logo">
+                <span>SheepHub</span>
+            </a>
+            <nav>
+                <a href="#" class="link-navegacao"><span>Feed</span></a>
+                <a href="#" class="link-navegacao"><span>Mensagens</span></a>
+                <a href="#" class="link-navegacao"><span>Eventos</span></a>
+                <a href="#" class="link-navegacao"><span>Igrejas</span></a>
+                <a href="#" class="link-navegacao"><span>Meu perfil</span></a>
+                <a href="#" class="link-navegacao ativo"><span>Dashboard</span></a>
+                <button class="botao-postar">Postar</button>
+            </nav>
+            <div>
+                <a href="#" class="link-navegacao"><span>Configurações</span></a>
+                <a href="#" class="link-navegacao"><span>Sair</span></a>
+            </div>
+        </aside>
+
+        <div id="fundo-overlay" class="hidden"></div>
+
+        <div class="conteudo-principal">
+            <header class="cabecalho">
+                <button id="botao-menu" class="botao-menu"></button>
+                <div class="busca-container">
+                    <input type="text" placeholder="Pesquisar" class="campo-busca">
+                </div>
+                <div class="acoes-cabecalho">
+                    <div class="info-perfil">
+                        <img src="https://placehold.co/40x40/E2E8F0/4A5568?text=CS" alt="Avatar">
+                        <div class="texto-perfil">
+                            <p><strong>Clara Silva</strong></p>
+                            <p style="font-size: 0.8rem; color: var(--cor-texto-secundario)">Membro</p>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+    </div> <!-- fecha container-principal -->
+
+    <!-- main e aside lado a lado -->
+    <div class="conteudo">
+        <main>
+            <div class="post">
+                <div class="info-autor">
+                    <img class="img-autor" src="../views/assets/img/estelar.jfif" alt="">
+                    <p class="nome-autor">Julianne Parga</p>
+                </div>
+
+                <div class="img-post"></div>
+
+                <div class="info-post">
+                    <p class="user-autor">@junnesupastar</p>
+                    <p class="legenda">célula com os amigos! #gratidao</p>
+                </div>
+
+                <div class="interacoes">
+                    <div class="numeros-post">
+                        <i class='bx interacao bxs-heart'></i>
+                        <span class="cont">9</span>
+                    </div>
+                    <div class="numeros-post">
+                        <i class='bx interacao bxs-message-bubble'></i>
+                        <span class="cont">3</span>
+                    </div>
+                    <div class="numeros-post">
+                        <i class='bx interacao bxs-send'></i>
+                        <span class="cont">5</span>
+                    </div>
+                </div>
+            </div>
+
+             <div class="post">
+                <div class="info-autor">
+                    <img class="img-autor" src="../views/assets/img/estelar.jfif" alt="">
+                    <p class="nome-autor">Julianne Parga</p>
+                </div>
+
+                <div class="img-post"></div>
+
+                <div class="info-post">
+                    <p class="user-autor">@junnesupastar</p>
+                    <p class="legenda">célula com os amigos! #gratidao</p>
+                </div>
+
+                <div class="interacoes">
+                    <div class="numeros-post">
+                        <i class='bx interacao bxs-heart'></i>
+                        <span class="cont">9</span>
+                    </div>
+                    <div class="numeros-post">
+                        <i class='bx interacao bxs-message-bubble'></i>
+                        <span class="cont">3</span>
+                    </div>
+                    <div class="numeros-post">
+                        <i class='bx interacao bxs-send'></i>
+                        <span class="cont">5</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside>
+            <h3>Aside</h3>
+            <p>Conteúdo lateral aqui.</p>
+        </aside>
+    </div>
+
+    <!-- modal post -->
+    <div id="modal-post" class="modal">
+        <div class="modal-conteudo">
+            <button class="botao-fechar" id="fechar-modal">&times;</button>
+            <h2>Fazer post</h2>
+            <img src="fotos.gif" alt="Imagem" class="modal-img">
+            <button class="botao-arquivo" id="botao-arquivo">Fotos do seu computador</button>
+            <input type="file" id="input-imagem" accept="image/*" style="display: none;">
+        </div>
+    </div>
+
+    <!-- MODAL 2: Ajustar -->
+    <div id="modal-ajustar" class="modal">
+    <div class="modal-ajustar-conteudo">
+        <div class="ajustar-header">
+            <button id="voltar-modal" class="botao-voltar"><i class='bx bx-arrow-left'  ></i> </button>
+            <h2>Ajustar</h2>
+            <button id="proximo-modal" class="botao-proximo">Postar</button>
+        </div>
+
+        <div class="ajustar-corpo">
+        <div class="ajustar-imagem">
+            <img id="preview-ajustar" src="" alt="">
+        </div>
+        <div class="ajustar-info">
+            <div class="autor">
+            <img src="../views/assets/img/estelar.jfif" alt="">
+            <p>@junnesupastar</p>
+            </div>
+
+            <textarea placeholder="Insira uma legenda..." maxlength="1000"></textarea>
+            <p class="contador">0/1000</p>
+
+            <h4>Marque um amigo!</h4>
+            <input type="text" placeholder="Pesquisar...">
+            <div class="lista-amigos">
+                <div class="amigo">
+                    <img src="../views/assets/img/estelar.jfif" alt="">
+                    <p>@usuario</p>
+                </div>
+                <div class="amigo">
+                    <img src="../views/assets/img/estelar.jfif" alt="">
+                    <p>@usuario</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+    <script src="../views/assets/js/postar.js"></script>
+</body>
+</html>
+
