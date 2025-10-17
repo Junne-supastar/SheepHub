@@ -85,6 +85,11 @@ h3 {
     margin-top: 20px;
 }
 
+.content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
+
 .cadastrar {
     margin: auto;
     display: flex;

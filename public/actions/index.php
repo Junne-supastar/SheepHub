@@ -1,9 +1,9 @@
 <?php
-require_once __DIR__ . '/../config/Conexao.php';
-require_once __DIR__ . '/../models/usuario.php';
-require_once __DIR__ . '/../controllers/AuthController.php';
-require_once __DIR__ . '/../models/PerfilInstituicao.php';
-require_once __DIR__ . '/../controllers/PerfilInstituicaoController.php';
+require_once __DIR__ . '/../../config/Conexao.php';
+require_once __DIR__ . '/../../models/usuario.php';
+require_once __DIR__ . '/../../controllers/AuthController.php';
+require_once __DIR__ . '/../../models/PerfilInstituicao.php';
+require_once __DIR__ . '/../../controllers/PerfilInstituicaoController.php';
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 

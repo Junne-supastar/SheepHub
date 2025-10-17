@@ -39,6 +39,10 @@ body {
   background: var(--azul-fundo);
 }
 
+.content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
 .container {
   display: flex;
   justify-content: center;

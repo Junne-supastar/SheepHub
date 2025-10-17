@@ -46,6 +46,11 @@ color: var(--cor-texto-principal);
 display: flex;
 }
 
+.content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
+
 /* Menu Lateral (Sidebar) */
 
 .menu-lateral {

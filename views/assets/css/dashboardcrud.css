@@ -663,6 +663,11 @@ i {
     color: white;
 }
 
+
+.content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
 .status-btn:hover {
     opacity: 0.8;
 }

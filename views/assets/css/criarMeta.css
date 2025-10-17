@@ -68,6 +68,15 @@ text-decoration: none;
 color: var(--azul-escuro);
 }
 
+a{
+  
+  text-decoration: none;
+}
+.content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
+
 .logo svg {
 width: 2rem;
 height: 2rem;

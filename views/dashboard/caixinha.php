@@ -7,41 +7,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-a5xw+4LxU0YrKjW/s1nyzVSkPBgKfqWrGrzJ8e/v2O0zPNMgD6q+Z6x4R5k1M4X9Lmz8mG63N5iWPh4Fz+0M5Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
-  <link rel="stylesheet" href="../views/assets/css/caixinha.css">
-  <script src="../views/assets/js/caixinha.js" defer></script>
+  <link rel="stylesheet" href="../assets/css/caixinha.css">
+  <script src="../assets/js/caixinha.js" defer></script>
 </head>
 <body>
 
-  <aside id="menu_lateral" class="menu_lateral">
-    <a href="#" class="logo"><span>SheepHub</span></a>
-    <nav>
-      <a href="#" class="link_nav"><span>Feed</span></a>
-      <a href="#" class="link_nav"><span>Mensagens</span></a>
-      <a href="#" class="link_nav ativo"><span>Eventos</span></a>
-      <a href="#" class="link_nav"><span>Igrejas</span></a>
-      <a href="#" class="link_nav"><span>Meu perfil</span></a>
-      <a href="#" class="link_nav"><span>Painel</span></a>
-      <button class="btn_postar">Postar</button>
-    </nav>
-    <div>
-      <a href="#" class="link_nav"><span>Configurações</span></a>
-      <a href="#" class="link_nav"><span>Sair</span></a>
-    </div>
-  </aside>
-
-  <div class="conteudo">
-    <header class="cabecalho">
-      <div class="busca_box">
-        <input type="text" placeholder="Pesquisar eventos..." class="campo_busca">
-      </div>
-      <div class="perfil_info">
-        <div class="perfil_texto">
-          <p>Clara Silva</p>
-          <p>Membro</p>
-        </div>
-        <img src="https://placehold.co/40x40/E2E8F0/4A5568?text=CS" alt="Avatar de Clara Silva">
-      </div>
-    </header>
+  <?php include __DIR__ . '/../includes/sidebar.php'; ?>
 
     <div class="area_eventos">
       <div class="container">

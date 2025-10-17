@@ -126,6 +126,10 @@ main{
     margin-bottom: 40px;
 }
 
+.content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
 .containe{
     width: 670px;
     margin-left: 300px;

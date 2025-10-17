@@ -9,13 +9,8 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<<<<<<< HEAD:views/dashboard_financas.php
-    <link rel="stylesheet" href="/SheepHub/views/assets/css/dashboard-finanças02.css">
-    <script src="/SheepHub/views/assets/js/dashboard-finanças02.js" defer></script>
-=======
     <link rel="stylesheet" href="../assets/css/dashboard-finanças02.css">
     <script src="../assets/js/dashboard-finanças02.js" defer></script>
->>>>>>> 3061752 (organização dos arquivos):views/dashboard/dashboard_financas.php
 </head>
 <body>
     <div class="container-principal">

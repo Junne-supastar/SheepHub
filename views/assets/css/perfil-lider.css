@@ -89,6 +89,10 @@ body {
     flex-grow: 1;
     }
     
+    .content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
     .link-navegacao {
     display: flex;
     align-items: center;

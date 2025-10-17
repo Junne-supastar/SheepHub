@@ -60,3 +60,8 @@
 .nav-link  > div > box-icon {
     margin-right: 10px;
 }
+
+.content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}

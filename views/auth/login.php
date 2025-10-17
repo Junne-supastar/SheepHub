@@ -22,7 +22,7 @@
         <h2>Entre com sua conta</h2>
       </header>
 
-      <form class="formulario-login" action="/index.php" method="POST">
+      <form class="formulario-login" action="../../public/actions/index.php" method="POST">
         <input type="hidden" name="acao" value="login">
 
         <fieldset class="grupo-campos">

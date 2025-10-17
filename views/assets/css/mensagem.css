@@ -52,6 +52,11 @@
     width: 100%;
   }
 
+  .content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
+
   li{
     display: flex;
     align-items: center;

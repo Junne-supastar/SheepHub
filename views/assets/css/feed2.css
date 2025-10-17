@@ -11,6 +11,11 @@
     background-color: #f4f4f4;
     display: flex;
   }
+
+  .content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
   
   /* Área principal */
   .main-content {

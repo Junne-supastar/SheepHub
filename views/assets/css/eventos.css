@@ -16,6 +16,11 @@
   width: 1500px;
 }
 
+.content {
+    padding: 30px 20px;
+    margin-left: 240px;
+}
+
 .cards{
     margin-left: 250px;
     display: flex;
