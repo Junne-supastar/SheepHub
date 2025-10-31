@@ -1,0 +1,342 @@
+@charset "UTF-08";
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+
+/*cores*/
+
+--azul-escuro: #1F3440;
+--azul-claro: #80CDEB;
+--azul: #7BAEC2;
+--azul-acizentado: #C0CED6;
+--cinza-salmao: #EEE8DC;
+--salmao: #F0D1A6;
+--amarelo-medio: #F2CF87;
+--amarelo-claro: #FFEBAA;
+--amarelo-fechado: #ECBE5F;
+--amarelo-escuro: #AB8E52;
+--amarelo-hover: #f3ab1c;
+--amarelo: #FCB628;
+--branco: #FFFFFF;
+--cinza-padrao: #ECF2F5;
+--cinza-claro: #D9D9D9;
+--cinza: #9B9B9B;
+--cinza-escuro: #565656;
+--preto: #000000;
+
+}
+
+* {
+
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: "Montserrat", sans-serif;
+
+}
+
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f3f4f6;
+        color: #374151;
+        height: 100vh;
+        overflow: hidden;
+    }
+    
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    
+    ul {
+        list-style: none;
+    }
+    
+    button {
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+    
+    /* --- Scrollbar --- */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #e5e7eb; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb { background: #9ca3af; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #6b7280; }
+    
+    /* --- Layout Principal --- */
+    .container-aplicativo {
+        display: flex;
+        height: 100vh;
+        width: 100%;
+    }
+    
+    /* --- ESTILOS DA NAVBAR FORAM REMOVIDOS DAQUI --- */
+    
+    /* --- Container do Chat --- */
+    .container-chat {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    /* --- Sidebar de Contatos --- */
+    .sidebar-contatos {
+        display: flex;
+        flex-direction: column;
+        width: 384px;
+        background-color: #ffffff;
+        border-right: 1px solid #e5e7eb;
+    }
+    
+    .sidebar-cabecalho {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .sidebar-cabecalho h1 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #1f2937;
+    }
+    
+    .barra-busca {
+        position: relative;
+        padding: 1rem;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .icone-busca {
+        position: absolute;
+        top: 50%;
+        left: 1.75rem;
+        transform: translateY(-50%);
+        color: #9ca3af;
+    }
+    .input-busca {
+        width: 100%;
+        padding: 0.5rem 1rem 0.5rem 2.5rem;
+        background-color: #f3f4f6;
+        border: 1px solid #e5e7eb;
+        border-radius: 9999px;
+        outline: none;
+    }
+    .input-busca:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px #bfdbfe;
+    }
+    
+    .lista-contatos {
+        flex: 1;
+        overflow-y: auto;
+    }
+    
+    /* --- Item de Contato (Gerado por JS) --- */
+    .item-contato {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+    .item-contato:hover {
+        background-color: #f9fafb;
+    }
+    .item-contato.contato-ativo {
+        background-color: #ebfaff;
+        border-right: 4px solid var(--azul-claro);
+    }
+    .item-contato .avatar-pequeno {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+    .contato-info {
+        margin-left: 0.75rem;
+        flex: 1;
+        min-width: 0; /* Para truncar texto */
+    }
+    .contato-nome {
+        font-weight: 600;
+        color: #1f2937;
+    }
+    .contato-mensagem {
+        font-size: 0.875rem;
+        color: #4b5563;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .contato-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: 0.75rem;
+        color: #6b7280;
+    }
+    .selo-nao-lido {
+        margin-top: 0.25rem;
+        width: 20px;
+        height: 20px;
+        background-color: var(--amarelo);
+        color: #fff;
+        font-size: 0.75rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* --- Janela do Chat --- */
+    .janela-chat {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        height: 100%;
+        background-color: #f3f4f6;
+    }
+    
+    .chat-cabecalho {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem 1rem;
+        background-color: #ffffff;
+        border-bottom: 1px solid #e5e7eb;
+    }
+    .chat-cabecalho .usuario-info {
+        display: flex;
+        align-items: center;
+    }
+    .chat-cabecalho .usuario-nome {
+        margin-left: 0.75rem;
+        font-weight: 600;
+        font-size: 1.125rem;
+        color: #1f2937;
+    }
+    .chat-cabecalho .botao-opcoes {
+        padding: 0.5rem;
+        border-radius: 50%;
+    }
+    .chat-cabecalho .botao-opcoes:hover {
+        background-color: #f3f4f6;
+    }
+    .chat-cabecalho .botao-opcoes svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: #6b7280;
+    }
+    
+    .area-mensagens {
+        flex: 1;
+        padding: 1.5rem;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    /* --- Placeholder (Sem chat selecionado) --- */
+    .area-mensagens-vazia {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        text-align: center;
+        color: #6b7280;
+    }
+    .conteudo-vazio {
+        padding: 2rem;
+        border: 2px dashed #d1d5db;
+        border-radius: 1rem;
+    }
+    .conteudo-vazio h2 {
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .conteudo-vazio p {
+        margin-top: 0.5rem;
+    }
+    
+    /* --- Bolhas de Mensagem (Geradas por JS) --- */
+    .container-mensagem {
+        display: flex;
+    }
+    .container-mensagem.enviada {
+        justify-content: flex-end;
+    }
+    .container-mensagem.recebida {
+        justify-content: flex-start;
+    }
+    .bolha-mensagem {
+        padding: 0.75rem;
+        border-radius: 0.75rem;
+        max-width: 70%;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+    .container-mensagem.enviada .bolha-mensagem {
+        background-color: #cee5f0;
+        border-bottom-right-radius: 0;
+    }
+    .container-mensagem.recebida .bolha-mensagem {
+        background-color: #e5e7eb;
+        border-bottom-left-radius: 0;
+    }
+    .texto-mensagem {
+        font-size: 0.875rem;
+        color: #1f2937;
+    }
+    .hora-mensagem {
+        font-size: 0.75rem;
+        text-align: right;
+        margin-top: 0.25rem;
+        color: #6b7280;
+    }
+    
+    /* --- Input de Mensagem --- */
+    .container-input-mensagem {
+        padding: 1rem;
+        background-color: #ffffff;
+        border-top: 1px solid #e5e7eb;
+    }
+    .container-input {
+        display: flex;
+        align-items: center;
+    }
+    .input-mensagem {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        background-color: #f3f4f6;
+        border-radius: 9999px;
+        border: none;
+        outline: none;
+    }
+    .input-mensagem:focus {
+        box-shadow: 0 0 0 2px #bfdbfe;
+    }
+    .botao-enviar {
+        margin-left: 0.75rem;
+        padding: 0.75rem;
+        background-color: var(--amarelo);
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .botao-enviar:hover {
+        background-color: var(--amarelo-hover);
+    }
+    .botao-enviar:disabled {
+        opacity: 0.5;
+    }
+    .botao-enviar svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
