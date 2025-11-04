@@ -1001,7 +1001,7 @@ header.page-header figure.profile-avatar {
 
                     <a href="/SheepHub/views/igrejas/igrejas.php" class="nav__link">
                         <i class="bi bi-house-heart" class="nav__icon"></i>
-                        <span class="nav__name">Igrejas</span>
+                        <span class="nav__name">Instituições</span>
                     </a>
 
                     <div class="nav__link collapse">
@@ -1014,7 +1014,7 @@ header.page-header figure.profile-avatar {
                             <a href="/SheepHub/views/dashboard/dashboard_financas.php" class="collapse__sublink">Finanças</a>
                             <a href="/SheepHub/views/dashboard/criarMeta.php" class="collapse__sublink">Metas</a>
                             <a href="/SheepHub/views/dashboard/Membros.php" class="collapse__sublink">Membros</a>
-                            <a href="/SheepHub/views/dashboard/demandas02.php" class="collapse__sublink">Demandas</a>
+                            <a href="/SheepHub/views/dashboard/demandas02.php" class="collapse__sublink">Pedidos</a>
                             <a href="/SheepHub/views/dashboard/caixinha/caixinha.php" class="collapse__sublink">Caixinha</a>
                         </ul>
                     </div>
