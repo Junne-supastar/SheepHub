@@ -7,28 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recuperação de Senha</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-<<<<<<< HEAD
-</head>
-<body>
-  <?php if (!empty($_SESSION['erro'])): ?>
-    <p style="color:red;font-weight:bold;"><?= $_SESSION['erro']; unset($_SESSION['erro']); ?></p>
-  <?php endif; ?>
-
-  <?php if (!empty($_SESSION['sucesso'])): ?>
-    <p style="color:green;font-weight:bold;"><?= $_SESSION['sucesso']; unset($_SESSION['sucesso']); ?></p>
-  <?php endif; ?>
-
-  <form action="/SheepHub/public/recuperacao.php" method="POST" style="max-width:400px;margin:40px auto;display:flex;flex-direction:column;gap:15px;">
-    <input type="email" name="email" placeholder="Digite seu e-mail" required style="padding:10px;border:1px solid #ccc;border-radius:5px;">
-    <button type="submit" style="padding:12px;background:#007BFF;color:#fff;border:none;border-radius:5px;cursor:pointer;">Enviar Link</button>
-  </form>
-=======
   <link rel="stylesheet" href="/SheepHub/views/assets/css/login.css"> <!-- mesmo CSS do login -->
+  <style>
+    .painel-esquerdo {
+    width: 450px;
+    height: 100%;
+    overflow: hidden; 
+    position: relative;
+  }
+
+  .painel-esquerdo img {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+  }
+  </style>
 </head>
 <body>
   <main class="conteudo-principal">
     <section class="painel-esquerdo">
       <!-- imagem ou fundo -->
+       <img src="../assets/img/bg.jpg" alt="">
     </section>
 
     <section class="painel-direito">
@@ -61,6 +60,6 @@
       </form>
     </section>
   </main>
->>>>>>> f4d0321393a89c89697f4334f12a979a84622d46
 </body>
 </html>
+
