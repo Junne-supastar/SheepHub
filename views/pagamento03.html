@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Avançado</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../views/assets/css/pagamento.css">
+    <script src="../views/assets/js/pagamento.js" defer></script>
+</head>
+<body>
+    
+
+    <div class="contentor">
+
+        <div class="seccao-formulario">
+            <div style="max-width: 500px; width: 100%; margin: 0 auto;">
+                <div class="icone-cabecalho">
+                    <i class="fa-solid fa-wallet"></i>
+                </div>
+                
+                <h1 class="titulo-cabecalho">Pagamento</h1>
+                <p class="subtitulo-cabecalho">Preencha os dados para finalizar a sua assinatura.</p>
+
+                <form id="formularioPagamento">
+                    <div class="grupo-formulario">
+                        <label for="numeroCartao">Número do Cartão</label>
+                        <div class="envelope-input">
+                            <input type="text" id="numeroCartao" maxlength="19" placeholder="0000 0000 0000 0000" required>
+                            <i class="fa-solid fa-credit-card icone-input"></i>
+                        </div>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="nomeCartao">Nome do Titular</label>
+                        <div class="envelope-input">
+                            <input type="text" id="nomeCartao" maxlength="24" placeholder="COMO NO CARTÃO" style="text-transform: uppercase;" required>
+                            <i class="fa-solid fa-user icone-input"></i>
+                        </div>
+                    </div>
+
+                    <div class="linha-formulario">
+                        <div class="coluna-formulario grupo-formulario">
+                            <label for="validadeCartao">Validade</label>
+                            <div class="envelope-input">
+                                <input type="text" id="validadeCartao" maxlength="5" placeholder="MM/AA" required>
+                            </div>
+                        </div>
+
+                        <div class="coluna-formulario grupo-formulario">
+                            <label for="cvvCartao">CVV</label>
+                            <div class="envelope-input">
+                                <input type="password" id="cvvCartao" maxlength="3" placeholder="123" required>
+                                <i class="fa-solid fa-circle-question icone-input" title="Código de 3 dígitos no verso"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-pagar">
+                        <span>Pagar R$119,99</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                    <div class="selo-seguranca">
+                        <i class="fa-solid fa-lock text-green-500"></i>
+                        <span>Pagamento 100% seguro e encriptado</span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="seccao-visual">
+            <div class="mancha mancha-1"></div>
+            <div class="mancha mancha-2"></div>
+
+            <div style="position: relative; z-index: 10; margin-bottom: 2rem; text-align: center;">
+                <h3 style="color: var(--azul-escuro); font-weight: 600;">Seu Cartão Virtual</h3>
+            </div>
+
+            <!-- Cartão 3D -->
+            <div class="contentor-cartao">
+                <div class="cartao-interno" id="cartaoInterno">
+                    
+                    <!-- FRENTE -->
+                    <div class="face-cartao cartao-frente">
+                        <div class="textura-cartao"></div>
+                        
+                        <div class="topo-cartao">
+                            <div class="chip"></div>
+                            <div class="logo-cartao" id="iconeMarcaCartao">
+                                <i class="fa-brands fa-cc-visa"></i>
+                            </div>
+                        </div>
+
+                        <div class="numero-cartao-visual" id="mostradorNumero">#### #### #### ####</div>
+
+                        <div class="fundo-cartao">
+                            <div>
+                                <span class="etiqueta-cartao">Titular</span>
+                                <div class="valor-cartao" id="mostradorNome">NOME DO TITULAR</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <span class="etiqueta-cartao">Validade</span>
+                                <div class="valor-cartao" id="mostradorValidade">MM/AA</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VERSO -->
+                    <div class="face-cartao cartao-verso">
+                        <div class="textura-cartao"></div>
+                        <div class="faixa-magnetica"></div>
+                        
+                        <div style="text-align: right; margin-right: 1.5rem; margin-bottom: 0.2rem;">
+                            <span class="etiqueta-cartao" style="color: white;">CVV</span>
+                        </div>
+                        <div class="caixa-cvv" id="mostradorCvv">***</div>
+                        
+                        <p class="aviso-legal">
+                            Este cartão é propriedade do banco emissor. Se encontrado, por favor devolva à agência mais próxima.
+                        </p>
+                        
+                        <div style="position: absolute; bottom: 1.5rem; right: 1.5rem; font-size: 1.5rem; opacity: 0.8;">
+                            <i class="fa-brands fa-cc-visa"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resumo-pedido">
+                <div class="linha-resumo">
+                    <span>Plano Atual</span>
+                    <span style="font-weight: 500;">Gold</span>
+                </div>
+                <div class="linha-resumo">
+                    <span>Taxas</span>
+                    <span style="font-weight: 500;">R$0.00</span>
+                </div>
+                <div class="total-resumo">
+                    <span>Total</span>
+                    <span>R$119,99</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sobreposicao-modal" id="modalSucesso">
+        <div class="conteudo-modal">
+            <div class="icone-sucesso">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--texto-escuro);">Sucesso!</h2>
+            <p style="color: var(--texto-cinza); line-height: 1.5;">O seu pagamento foi confirmado. Enviámos o recibo para o seu email.</p>
+            <button class="btn-modal" onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+
+</body>
+</html>
